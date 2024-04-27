@@ -1,0 +1,130 @@
+/* File: public/css/masuk.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8c4;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Mengatasi overflow glitter */
+}
+
+h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+
+.containergambar {
+    display: block;
+    /* Agar margin otomatis (margin:auto) bekerja */
+    margin: 0 auto;
+    /* Meletakkan gambar di tengah */
+    width: 20%;
+    max-width: 600px;
+    /* Atur lebar maksimum jika Anda ingin batas maksimum */
+
+    /* Membuat container berada di tengah */
+}
+
+
+/* Style untuk input email dan password */
+.email,
+.password {
+    margin-bottom: 20px;
+    /* Memberi jarak antara email dan password */
+}
+
+.email label,
+.password label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    /* Memperbesar ukuran teks */
+}
+
+.email input[type="email"],
+.password input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #ccc;
+    /* Memperbesar ukuran border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style untuk container login */
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.bg-white {
+    background-color: #ffaf1a
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.rounded {
+    border-radius: 0.375rem;
+}
+
+.w-80 {
+    width: 20rem;
+}
+
+/* Style untuk tombol login */
+.login {
+    margin-top: 10px;
+    /* Mengurangi margin atas */
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #d9cb06;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style untuk link Forgot Password */
+.forgot-password {
+    font-size: 0.8rem;
+    /* Ukuran teks yang lebih kecil */
+    display: block;
+    text-align: left;
+    margin-bottom: 15px;
+    color: #777;
+    text-decoration: none;
+}
+
+.daftar {
+    font-size: 0.8rem;
+    /* Ukuran teks yang lebih kecil */
+    display: flex;
+    justify-content: center;
+    /* Untuk memposisikan konten di tengah */
+    text-align: center;
+    /* Mengatur teks di tengah */
+    margin-bottom: 15px;
+    color: #777;
+    text-decoration: none;
+}
+
+/* Style untuk paragraf dengan link pendaftaran */
+p {
+    margin-top: 15px;
+    text-align: center;
+    /* Posisikan teks di tengah */
+}
+
+/* Style untuk margin kanan */
+.mr-2 {
+    margin-right: 0.5rem;
+}

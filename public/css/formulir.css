@@ -1,0 +1,86 @@
+.body {
+    margin: 0;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+
+}
+
+.card-body {
+    padding: 20px;
+    width: 100%;
+}
+
+.sidebar {
+    background-color: #f4f4f4;
+    padding: 20px;
+    color: rgb(19, 5, 5);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    z-index: 1;
+    /* Untuk memastikan sidebar tetap di atas konten */
+    overflow-x: hidden;
+    /* Untuk mengatasi masalah scrollbar horizontal */
+}
+
+.image-container {
+    margin-top: 50px;
+
+    /* Adjust the margin-top as needed */
+}
+
+/* Gaya tambahan untuk dropdown */
+.dropdown-menu {
+    background-color: #f8f9fa;
+    /* Warna latar belakang */
+    border: 1px solid #ced4da;
+    /* Warna border */
+}
+
+.dropdown-item {
+    color: #343a40;
+    /* Warna teks */
+    transition: background-color 0.3s ease;
+    /* Efek transisi */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #007bff;
+    /* Warna latar belakang saat di-hover */
+    color: #fff;
+    /* Warna teks saat di-hover */
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #0056b3;
+    /* Warna latar belakang saat aktif */
+    color: #fff;
+    /* Warna teks saat aktif */
+}
+
+.dropdown-toggle::after {
+    content: none;
+    /* Hilangkan panah dropdown bawaan */
+}
+
+.dropdown-toggle::before {
+    content: '\f107';
+    /* Tambahkan ikon panah ke bawah */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 5px;
+    transition: transform 0.4s ease;
+    /* Efek transisi */
+}
+
+.dropdown-toggle[aria-expanded="true"]::before {
+    transform: rotate(180deg);
+    /* Putar ikon panah saat dropdown terbuka */
+}

@@ -1,0 +1,43 @@
+body {
+    overflow-y: auto;
+    /* Menambahkan scrollbar di sebelah kanan halaman */
+}
+
+.container {
+    padding-left: 250px;
+    /* Lebar sidebar */
+    transition: padding-left 0.3s ease;
+    /* Menambahkan transisi untuk perubahan padding */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    /* Mengatur z-index menjadi 999 agar sidebar berada di bawah elemen tabel */
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    width: 250px;
+    /* Lebar sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .nav-item {
+    margin-bottom: 10px;
+}
+
+.sidebar .judul {
+    color: #d79447;
+    text-align: center;
+    margin-bottom: 20px;
+}
