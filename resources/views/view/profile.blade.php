@@ -1,10 +1,19 @@
 @extends('app')
 
 @section('content')
-
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="css/popup.css">
 </head>
+
+<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+    <div class="search" style="max-width: 300px;"> 
+        <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
+        <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
+    </div>
+</div>
+
 <div class="card">
     <div class="card-body">
     <h4 class="font-weight-bold mb-0">Data Akun Profile</h4>
@@ -205,5 +214,45 @@
             popup.style.display = 'none';
         }
     }
+
+    function fetchAllProfileNames() {
+    fetch("{{ route('all-profile-names') }}")
+        .then(response => response.json())
+        .then(data => {
+            const searchInput = document.getElementById("searchInput");
+            data.forEach(name => {
+                const option = document.createElement("option");
+                option.value = name;
+                searchInput.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching profile names:', error));
+}
+
+function searchData() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table-list");
+    tbody = table.getElementsByTagName("tbody")[0];
+    tr = tbody.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; // Index 2 is for the Name column
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// Call the function to fetch all VIP names when the page loads
+window.onload = function() {
+    fetchAllProfileNames();
+};
+
 </script>
 @endsection

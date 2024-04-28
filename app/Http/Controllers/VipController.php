@@ -85,4 +85,10 @@ class VipController extends Controller
         $cetakPertanggal = Vip::whereBetween('tanggal',[$tanggalAwal, $tanggalAkhir])->get();
         return view('vip.cetak-vip-tanggal', compact('cetakPertanggal'));
     }
+
+    public function getAllVipNames()
+    {
+        $vipNames = Vip::pluck('nama')->toArray();
+        return response()->json($vipNames);
+    }
 }

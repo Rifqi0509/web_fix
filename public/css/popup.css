@@ -65,3 +65,61 @@
     border-radius: 5px;
     z-index: 1000;
 }
+
+
+/* Styling for the search input */
+#searchInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Styling for the search button */
+#searchButton {
+    border-top-left-radius: 20px; /* Make the left border rounded */
+    border-bottom-left-radius: 20px; /* Make the left border rounded */
+    border-top-right-radius: 20px; /* Make the right border rounded */
+    border-bottom-right-radius: 20px; /* Make the right border rounded */
+    height: calc(100% - 2px); /* Adjust height */
+    width: 40px;
+}
+
+/* Hover effect for the search button */
+#searchButton:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+    border-color: #5a6268;
+    color: #fff;
+}
+
+.dropdown {
+    margin-right: 10px; /* Add margin to the right of the dropdown button */
+}
+
+.search {
+    --padding: 12px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 20px;
+    background: #f6f6f6;
+    transition: box-shadow 0.25s;
+}
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input {
+    font-size: 14px;
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}
+
+.search-input::placeholder,
+.search-icon {
+    color: rgba(0, 0, 0, 0.25);
+}

@@ -136,28 +136,35 @@
                     <p style="font-size: 15px; font-family: serif;">LEBIH DEKAT DENGAN KAMI!</p><br>
                     <p style="color: #d9cb06;">Kunjungi Dan Temukan Kami Diberbagai Platform Social Media Untuk Mengeksplor Lebih Jauh.</p><br>
                     <div class="social-icons" style="color: #fff;">
-                        <a href="https://www.ptmdr.co.id/"><i class="bi-globe" style="font-size: 20px; color:white;"></i></a>
+                        <a href="https://dispendik.jemberkab.go.id/"><i class="bi-globe" style="font-size: 20px; color:white;"></i></a>
                         &nbsp;&nbsp;
-                        <a href="https://www.facebook.com/MangliDjayaRaya/"><i class="bi-facebook" style="font-size: 20px; color:white;"></i></a>
+                        <a href="https://www.facebook.com/dispendik.jember/"><i class="bi-facebook" style="font-size: 20px; color:white;"></i></a>
                         &nbsp;&nbsp;
-                        <a href="https://twitter.com/manglidjayaraya?lang=id"><i class="bi-twitter" style="font-size: 20px; color:white;"></i></a>
+                        <a href="https://dispendik.jemberkab.go.id/@diknasjember"><i class="bi-twitter" style="font-size: 20px; color:white;"></i></a>
                         &nbsp;&nbsp;
-                        <a href="https://www.instagram.com/manglidjayaraya/?hl=id"><i class="bi-instagram" style="font-size: 20px; color:white;"></i></a>
+                        <a href="https://www.instagram.com/disdikjember/"><i class="bi-instagram" style="font-size: 20px; color:white;"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://www.youtube.com/channel/UCoGNlbM_8QMv7XCTPiVxMbQ/featured"><i class="bi-youtube" style="font-size: 20px; color:white;"></i></a>
                     </div>
                 <!-- </form> -->
             </div>
             <div class="maps-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1973.0149763259863!2d113.5707677579727!3d-8.203142729675596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7b1bfae3eeb55%3A0x3a74696b38f90783!2sPT.%20Mangli%20Djaya%20Raya!5e0!3m2!1sen!2sid!4v1649734707859!5m2!1sen!2sid" width="1000" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                <div class="footer-content">
-            <p>Hak Cipta © 2024 Pantau Tamu Pro. Dibuat dengan <i class="ri-heart-fill"></i> oleh Tim Pengembang Aplikasi |</p>
-            <p>Powered By Smart IT</p>
-            <br>
-            <a href="/login">Login Admin</a>
-        </div>
-          </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1973.0149763259863!2d113.70262798012148!3d-8.15233048564564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7b1bfae3eeb55%3A0x3a74696b38f90783!2sPT.%20Mangli%20Djaya%20Raya!5e0!3m2!1sen!2sid!4v1649734707859!5m2!1sen!2sid&z=20" width="900" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="footer-content">
+        <p>Hak Cipta © 2024 Pantau Tamu Pro. Dibuat dengan <i class="ri-heart-fill"></i> oleh Tim Pengembang Aplikasi |</p>
+        <p>Powered By Smart IT</p>
+        <br>
+        <a href="/login">Login Admin</a>
+    </div>
+</div>
+
+
          
         </div>
-       
+
+
+
+
         
     </footer>
 </section>

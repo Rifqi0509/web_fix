@@ -90,4 +90,10 @@ class ProfileController extends Controller
     {
         return Excel::download(new ProfileExport, 'profile.xlsx');
     }
+
+    public function getAllProfileNames()
+    {
+        $profileNames = Admin::pluck('nama')->toArray();
+        return response()->json($profileNames);
+    }
 }

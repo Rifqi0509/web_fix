@@ -105,4 +105,10 @@ class VisitorController extends Controller
         $cetakPertanggal = Visitor::whereBetween('tanggal',[$tanggalAwal, $tanggalAkhir])->get();
         return view('tamu.cetak-tamu-tanggal', compact('cetakPertanggal'));
     }
+
+    public function getAllVisitorNames()
+{
+    $visitorNames = Visitor::pluck('nama')->toArray();
+    return response()->json($visitorNames);
+}
 }

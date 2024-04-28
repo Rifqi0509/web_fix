@@ -82,4 +82,10 @@ class KaryawanController extends Controller
         $karyawans = Karyawan::all();
         return view ('rekap.cetak-karyawan', compact('karyawans'));
     }
+
+    public function getAllKaryawanNames()
+    {
+        $karyawanNames = Karyawan::pluck('nama')->toArray();
+        return response()->json($karyawanNames);
+    }
 }
