@@ -57,17 +57,28 @@ Route::post('/login', [LoginController::class, 'login']);
             
         });
 
+        Route::controller(ProfileController::class)->group(function () {
+            Route::resource('/profile', ProfileController::class);
+            Route::get('/cetak-profile', 'cetak')->name('cetak-profile'); 
+            Route::get('/excel-profile', 'xlsx')->name('excel-profile');
+            Route::get('/all-profile-names', 'getAllProfileNames')->name('all-profile-names');
+            
+        });
+
+        Route::controller(VipController::class)->group(function () {
+            Route::resource('/vip', VipController::class);
+            Route::get('/cetak-vip-form', 'cetakForm')->name('cetak-vip-form');
+            Route::get('/cetak-vip-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-vip-tanggal');  
+            Route::get('/excel-vip', 'xlsx')->name('excel-vip');
+            Route::get('/all-vip-names', 'getAllVipNames')->name('all-vip-names');
+            
+        });
+        
         Route::controller(VisitorController::class)->group(function () {
             Route::get('/cetak-tamu-form', 'cetakForm')->name('cetak-tamu-form');
             Route::get('/cetak-tamu-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-tamu-tanggal');  
             Route::get('/excel', 'xlsx')->name('xlsx'); 
-        
-        });
-
-        Route::controller(KaryawanController::class)->group(function () {
-            Route::resource('/karyawan', KaryawanController::class);
-            Route::get('/cetak-karyawan', 'cetak')->name('cetak-karyawan'); 
-            Route::get('/excel-karyawan', 'xlsx')->name('excel-karyawan');
+            Route::get('/all-visitor-names', 'getAllVisitorNames')->name('all-visitor-names');
             
         });
 

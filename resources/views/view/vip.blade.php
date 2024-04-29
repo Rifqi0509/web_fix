@@ -2,9 +2,17 @@
 
 @section('content')
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="css/popup.css">
 </head>
+
+<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+    <div class="search" style="max-width: 300px;"> 
+        <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
+        <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
+    </div>
+</div>
 
 <div class="card">
     <div class="card-body">
@@ -117,31 +125,32 @@
         @csrf
         <div class="form-group">
             <label for="nama">Undangan</label>
-            <input type="text" class="form-control" id="nama" name="undangan" placeholder="Masukkan Kode Undangan">
+            <input type="text" class="form-control" id="nama" name="undangan" placeholder="Masukkan Kode Undangan" required>
         </div>
         <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
         </div>
         <div class="form-group">
             <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat">
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" required>
         </div>
         <div class="form-group">
             <label for="keperluan">Keperluan</label>
-            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan">
+            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan" required>
         </div>
         <div class="form-group">
             <label for="asal_instansi">Asal Instansi</label>
-            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi">
+            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi" required>
         </div>
         <div class="form-group">
             <label for="no_hp">No HP</label>
-            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP">
+            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP" required pattern="08[0-9]{10,}">
         </div>
+
         <div class="form-group">
             <label for="status">Tanggal</label>
-            <input type="date" class="form-control" id="status" name="tanggal" placeholder="Masukkan Tanggal">
+            <input type="date" class="form-control" id="status" name="tanggal" placeholder="Masukkan Tanggal" required>
         </div>
         <div style="text-align: center;">
             <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
@@ -149,6 +158,7 @@
         </div>
     </form>
 </div>
+
 <!-- END POP UP TAMBAH DATA-->
 
 <script>
@@ -220,5 +230,45 @@ dropdown.addEventListener("change", function() {
                 popup.style.display = 'none';
             }
         }
+
+        function fetchAllVipNames() {
+    fetch("{{ route('all-vip-names') }}")
+        .then(response => response.json())
+        .then(data => {
+            const searchInput = document.getElementById("searchInput");
+            data.forEach(name => {
+                const option = document.createElement("option");
+                option.value = name;
+                searchInput.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching vip names:', error));
+}
+
+function searchData() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table-list");
+    tbody = table.getElementsByTagName("tbody")[0];
+    tr = tbody.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; // Index 2 is for the Name column
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// Call the function to fetch all VIP names when the page loads
+window.onload = function() {
+    fetchAllVipNames();
+};
+
 </script>
 @endsection

@@ -2,9 +2,18 @@
 
 @section('content')
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="css/popup.css">
 </head>
+
+<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+    <div class="search" style="max-width: 300px;"> 
+        <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
+        <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
+    </div>
+</div>
+
 <div class="card">
     <div class="card-body">
     <h4 class="font-weight-bold mb-0">Data Tamu Kunjungan</h4>
@@ -87,36 +96,36 @@
     <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu Kunjungan</h4>
     
     <form action="/tambahdata" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
-        </div>
-        <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat">
-        </div>
-        <div class="form-group">
-            <label for="keperluan">Keperluan</label>
-            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan">
-        </div>
-        <div class="form-group">
-            <label for="asal_instansi">Asal Instansi</label>
-            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi">
-        </div>  
-        <div class="form-group">
-            <label for="no_hp">No HP</label>
-            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP">
-        </div>
-        <div class="form-group">
-            <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
-        </div>
-        <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
-            <button type="button" class="btn btn-secondary" onclick="togglePopup()">Close</button>
-        </div>
-    </form>
+    @csrf
+    <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
+    </div>
+    <div class="form-group">
+        <label for="alamat">Alamat</label>
+        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" required>
+    </div>
+    <div class="form-group">
+        <label for="keperluan">Keperluan</label>
+        <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan" required>
+    </div>
+    <div class="form-group">
+        <label for="asal_instansi">Asal Instansi</label>
+        <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi" required>
+    </div>  
+    <div class="form-group">
+        <label for="no_hp">No HP</label>
+        <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP" required pattern="08[0-9]{10,}">
+    </div>
+    <div class="form-group">
+        <label for="tanggal">Tanggal</label>
+        <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal" required>
+    </div>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
+        <button type="button" class="btn btn-secondary" onclick="togglePopup()">Close</button>
+    </div>
+</form>
 </div>
 <!-- END POP UP TAMBAH DATA -->
 
@@ -156,5 +165,45 @@
             popup.style.display = 'none';
         }
     }
+
+    function fetchAllVisitorNames() {
+        fetch("{{ route('all-visitor-names') }}")
+            .then(response => response.json())
+            .then(data => {
+                const searchInput = document.getElementById("searchInput");
+                data.forEach(name => {
+                    const option = document.createElement("option");
+                    option.value = name;
+                    searchInput.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching visitor names:', error));
+    }
+
+    // Call the function to fetch all visitor names when the page loads
+    window.onload = function() {
+        fetchAllVisitorNames();
+    };
+
+    // Function to search data by name
+    function searchData() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput"); // Menggunakan ID searchInput
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table-list");
+    tbody = table.getElementsByTagName("tbody")[0];
+    tr = tbody.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Index 1 is for the Name column
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
 </script>
 @endsection

@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $profiles = Admin::orderBy('created_at', 'desc')->paginate(6);
@@ -20,17 +17,11 @@ class ProfileController extends Controller
     
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('profiles.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
 {
     // Validasi data yang masuk
@@ -38,35 +29,27 @@ class ProfileController extends Controller
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:admins',
         'role' => 'required|string|max:255',
-        'password' => 'required|string|min:8', // Atur aturan validasi sesuai kebutuhan
+        'password' => 'required|string|min:8',
     ]);
 
     // Hash password sebelum menyimpannya
     $hashedPassword = Hash::make($request->password);
 
-    // Simpan data admin dengan password yang di-hash
     Admin::create([
         'name' => $request->name,
         'email' => $request->email,
         'role' => $request->role,
-        'password' => $hashedPassword, // Simpan password yang sudah di-hash
+        'password' => $hashedPassword,
     ]);
 
-    // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
     return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
-}
+    }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $profiles = Admin::findOrFail($id);
@@ -75,17 +58,34 @@ class ProfileController extends Controller
         return view('profile.edit', compact('profiles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        $profiles = Admin::findOrFail($id);
+    // Temukan profil admin berdasarkan ID
+    $profile = Admin::findOrFail($id);
 
-        $profiles->update($request->all());
+    // Validasi data yang masuk
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:admins,email,'.$profile->id,
+        'role' => 'required|string|max:255',
+        'password' => 'nullable|string|min:8', // Password menjadi opsional
+    ]);
 
-        // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
-        return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
+    // Lakukan update berdasarkan input yang diterima
+    $profile->name = $request->name;
+    $profile->email = $request->email;
+    $profile->role = $request->role;
+
+    // Jika ada password baru yang diberikan, hash dan simpan
+    if ($request->password) {
+        $profile->password = Hash::make($request->password);
+    }
+
+    // Simpan perubahan
+    $profile->save();
+
+    // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
+    return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -107,5 +107,11 @@ class ProfileController extends Controller
     public function xlsx()
     {
         return Excel::download(new ProfileExport, 'profile.xlsx');
+    }
+
+    public function getAllProfileNames()
+    {
+        $profileNames = Admin::pluck('nama')->toArray();
+        return response()->json($profileNames);
     }
 }

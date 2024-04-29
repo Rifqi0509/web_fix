@@ -31,11 +31,30 @@ class VipController extends Controller
      */
     public function store(Request $request)
     {
-        // Simpan data ke database
-        Vip::create($request->all());
+       // Validasi data yang masuk
+    $request->validate([
+        'undangan' => 'required|string|max:255',
+        'nama' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'keperluan' => 'required|string|max:255',
+        'asal_instansi' => 'required|string|max:255',
+        'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
+        'tanggal' => 'required|date',
+    ]);
 
-        // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
-        return redirect()->route('vip.index')->with('success', 'Data berhasil disimpan!');
+    // Simpan data ke database
+    Vip::create([
+        'undangan' => $request->undangan,
+        'nama' => $request->nama,
+        'alamat' => $request->alamat,
+        'keperluan' => $request->keperluan,
+        'asal_instansi' => $request->asal_instansi,
+        'no_hp' => $request->no_hp,
+        'tanggal' => $request->tanggal,
+    ]);
+
+    // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
+    return redirect()->route('vip.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -84,5 +103,11 @@ class VipController extends Controller
     {
         $cetakPertanggal = Vip::whereBetween('tanggal',[$tanggalAwal, $tanggalAkhir])->get();
         return view('vip.cetak-vip-tanggal', compact('cetakPertanggal'));
+    }
+
+    public function getAllVipNames()
+    {
+        $vipNames = Vip::pluck('nama')->toArray();
+        return response()->json($vipNames);
     }
 }

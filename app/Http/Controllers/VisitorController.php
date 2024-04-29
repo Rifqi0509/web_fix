@@ -31,25 +31,24 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-          // Validasi data jika diperlukan
-          $validatedData = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'keperluan' => 'required',
-            'asal_instansi' => 'required',
-            'no_hp' => 'required',
-            'tanggal' => 'required',
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'keperluan' => 'required|string|max:255',
+            'asal_instansi' => 'required|string|max:255',
+            'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
+            'tanggal' => 'required|date',
         ]);
-
+    
         // Simpan data ke database
-        $tamu = new Visitor; // Ganti Tamu dengan nama model Anda
-        $tamu->nama = $request->nama;
-        $tamu->alamat = $request->alamat;
-        $tamu->keperluan = $request->keperluan;
-        $tamu->asal_instansi = $request->asal_instansi;
-        $tamu->no_hp = $request->no_hp;
-        $tamu->tanggal = $request->tanggal;
-        $tamu->save();
+        Visitor::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'keperluan' => $request->keperluan,
+            'asal_instansi' => $request->asal_instansi,
+            'no_hp' => $request->no_hp,
+            'tanggal' => $request->tanggal,
+        ]);
 
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return redirect()->back()->with('success', 'Data berhasil disimpan!');
@@ -105,4 +104,10 @@ class VisitorController extends Controller
         $cetakPertanggal = Visitor::whereBetween('tanggal',[$tanggalAwal, $tanggalAkhir])->get();
         return view('tamu.cetak-tamu-tanggal', compact('cetakPertanggal'));
     }
+
+    public function getAllVisitorNames()
+{
+    $visitorNames = Visitor::pluck('nama')->toArray();
+    return response()->json($visitorNames);
+}
 }
