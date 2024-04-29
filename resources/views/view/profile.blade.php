@@ -109,9 +109,13 @@
             <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan asal email">
         </div>
         <div class="form-group">
-            <label for="role">Role</label>
-            <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan role">
-        </div>
+    <label for="role">Role</label>
+    <select class="form-control form-control-lg" id="role" name="role">
+        <option value="admin">Admin</option>
+        <option value="superadmin">Superadmin</option>
+    </select>
+</div>
+
         <div class="form-group">
             <label for="password">Password</label>
             <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan password">

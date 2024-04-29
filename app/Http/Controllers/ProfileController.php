@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProfileExport;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -31,12 +32,29 @@ class ProfileController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        Admin::create($request->all());
+{
+    // Validasi data yang masuk
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:admins',
+        'role' => 'required|string|max:255',
+        'password' => 'required|string|min:8', // Atur aturan validasi sesuai kebutuhan
+    ]);
 
-        // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
-        return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
-    }
+    // Hash password sebelum menyimpannya
+    $hashedPassword = Hash::make($request->password);
+
+    // Simpan data admin dengan password yang di-hash
+    Admin::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'role' => $request->role,
+        'password' => $hashedPassword, // Simpan password yang sudah di-hash
+    ]);
+
+    // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
+    return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
+}
 
     /**
      * Display the specified resource.

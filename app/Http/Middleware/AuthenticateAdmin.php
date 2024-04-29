@@ -18,11 +18,12 @@ class AuthenticateAdmin
     public function handle(Request $request, Closure $next)
     {
         // Periksa apakah pengguna sudah diautentikasi
-        if (Auth::guard('admins')->check()) {
-            return $next($request);
-        }
+        $user = Auth::guard('admins')->user();
 
-        // Jika tidak, redirect ke halaman login atau halaman lain yang sesuai
-        return redirect()->route('login')->with('error', 'Silakan login untuk melanjutkan.');
+            if ($user && $user->role === 'admin') {
+                return $next($request);
+        }
+        
+        return abort(404, 'Not Found.');
     }
 }

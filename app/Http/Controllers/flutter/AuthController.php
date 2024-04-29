@@ -1,13 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\flutter;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+
+            return response()->json([
+                'success' => true,
+            ]);
+        } else {
+            return back()->withErrors(['email' => 'Invalid credentials']);
+        }
+    }
+
     public function register(Request $request)
     {
         // Validasi data registrasi
@@ -31,10 +48,9 @@ class RegisterController extends Controller
        $user->alamat = $validatedData['alamat'];
        $user->no_telepon = $validatedData['no_telepon'];
        $user->tanggal_lahir = $validatedData['tanggal_lahir'];
-       // Assign additional fields as needed
        $user->save();
 
         // Beri respons ke aplikasi Flutter
-        return response()->json(['message' => 'User registered successfully'], 201);
+        return response()->json(['message' => 'User registered successfully'], 200);
     }
 }

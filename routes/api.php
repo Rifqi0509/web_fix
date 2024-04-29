@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\flutter\LoginController;
-use App\Http\Controllers\flutter\RegisterController;
+use App\Http\Controllers\flutter\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +18,6 @@ use App\Http\Controllers\flutter\RegisterController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login_flutter', [LoginController::class, 'login']);
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login_flutter', [AuthController::class, 'login']);
+Route::post('/register_flutter', [AuthController::class, 'register']);
 
