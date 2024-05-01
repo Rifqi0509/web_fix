@@ -29,4 +29,11 @@ class HomeController extends Controller
         return view ('view.tables');
     }
 
+<<<<<<< HEAD
+=======
+    public function struktur(){
+        return view ('view.strukturorganisasi');
+    }
+
+>>>>>>> 438ad34 (update)
 }

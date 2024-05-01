@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('vip', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('undangan');
             $table->string('nama');
             $table->text('alamat');
@@ -20,6 +21,19 @@ return new class extends Migration
             $table->string('asal_instansi');
             $table->string('no_hp');
             $table->date('tanggal');
+=======
+            $table->string('kd_undangan');
+            $table->string('nama');
+            $table->text('alamat');
+            $table->string('asal_instansi');
+            $table->string('no_hp');
+            $table->string('keperluan');
+            $table->enum('departemen', ['keuangan', 'ketenagakerjaan', 'paud/tk','sd', 'smp', 'perencanaan'])->nullable(); 
+            $table->enum('seksi', ['kurikulum/penilaian', 'sarana/prasarana', 'pendidik_sd','pendidik_smp',])->nullable(); 
+            $table->date('tanggal');
+            $table->enum('status', ['Proses', 'Approved', 'Rejected','Pending'])->nullable(); 
+            $table->string('ket')->nullable(); 
+>>>>>>> 438ad34 (update)
             $table->timestamps();
         });
     }

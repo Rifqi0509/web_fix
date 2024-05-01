@@ -19,7 +19,11 @@
     <div class="flex justify-center items-center h-screen">
         <div class="container">
         
+<<<<<<< HEAD
         <img src="img/user.png" alt="logo" style="height: 100px;" class="containergambar"/>
+=======
+        <img src="img/user2.png" alt="logo" style="height: 100px; width: 100px;" class="containergambar"/>
+>>>>>>> 438ad34 (update)
             <i class="fas fa-users text-6xl text-gray-500 mb-6"></i>
             <div class="bg-white p-8 rounded shadow-md relative">
                 <i class="fas fa-sign-in-alt text-6xl text-gray-500 absolute -top-6 left-1/2 transform -translate-x-1/2"></i>
@@ -45,9 +49,18 @@
                         <a href="#" class="forgot-password">Forgot Password?</a>
                     </div>
                     <div>
+<<<<<<< HEAD
                         <button type="submit" class="login"><b>Login</b></button>
                        
                     </div>
+=======
+                        <button type="submit" class="login"><b>Login</b></button>  
+                    </div>
+                    <br>
+                        <div style="display: flex; justify-content: center;">
+                            <a href="/" class="forgot-password">Klik Untuk Kembali ke Halaman Home!</a>
+                        </div>
+>>>>>>> 438ad34 (update)
                 </form>
             </div>
             

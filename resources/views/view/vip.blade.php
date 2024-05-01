@@ -7,12 +7,16 @@
 <link rel="stylesheet" href="css/popup.css">
 </head>
 
+<<<<<<< HEAD
 <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
     <div class="search" style="max-width: 300px;"> 
         <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
         <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
     </div>
 </div>
+=======
+
+>>>>>>> 438ad34 (update)
 
 <div class="card">
     <div class="card-body">
@@ -20,7 +24,11 @@
     <br>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="dropdown">
+<<<<<<< HEAD
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px;">
+=======
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; color:#55552b;">
+>>>>>>> 438ad34 (update)
                     Rekap
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
@@ -29,7 +37,11 @@
                 </ul>
             </div>
             
+<<<<<<< HEAD
             <button class="btn btn-dark" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
+=======
+            <button class="btn btn-success" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
+>>>>>>> 438ad34 (update)
                 <i class="fas fa-plus"></i> &nbsp;Tambah Data
             </button>
         </div>
@@ -45,9 +57,17 @@
                         <th>Keperluan</th>
                         <th>Asal Instansi</th>
                         <th>No HP</th>
+<<<<<<< HEAD
                         <th>Tanggal</th>
                         <th>Status</th>
                         <th>Input Keterangan</th>
+=======
+                        <th>Rencana Tanggal Pertemuan</th>
+                        <th>Status</th>
+                        <th>Departemen</th>
+                        <th>Seksi</th>
+                        <th>Keterangan</th>
+>>>>>>> 438ad34 (update)
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -61,13 +81,18 @@
                     @foreach($vips as $index => $vip)
                     <tr>
                         <td>{{ ($vips->currentPage() - 1) * $vips->perPage() + $loop->index + 1 }}</td>
+<<<<<<< HEAD
                         <td>{{ $vip->undangan }}</td>
+=======
+                        <td>{{ $vip->kd_undangan }}</td>
+>>>>>>> 438ad34 (update)
                         <td>{{ $vip->nama }}</td>
                         <td>{{ $vip->alamat }}</td>
                         <td>{{ $vip->keperluan }}</td>
                         <td>{{ $vip->asal_instansi }}</td>
                         <td>{{ $vip->no_hp }}</td>
                         <td>{{ $vip->tanggal }}</td>
+<<<<<<< HEAD
                         <td>
                         <select id="status-dropdown">
                             <option>Proses</option>
@@ -87,6 +112,28 @@
                             <i class="fas fa-trash-alt"></i>&nbsp;Delete
                         </button>
                         </td>
+=======
+                        <td>{{ $vip->status }}</td>
+                        <td>{{ $vip->departemen }}</td>
+                        <td>{{ $vip->seksi }}</td>
+                        <td>{{ $vip->ket }}</td>
+                        
+                        <td>
+    <div style="display: flex; align-items: center;">
+        <button onclick="togglePopupedit({{ $vip->id }})" class="btn btn-primary" style="color: white; padding: 5px 10px; height: auto;">
+            <i class="fas fa-edit"></i>&nbsp;Edit
+        </button>
+        <form action="{{ route('vip.destroy', $vip->id) }}" method="POST" class="delete-form" style="margin-left: 5px;">
+            @method('delete')
+            @csrf
+            <button onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger" style="color: white; padding: 5px 10px; height: auto;">
+                <i class="fas fa-trash-alt"></i>&nbsp;Delete
+            </button>
+        </form>
+    </div>
+</td>
+
+>>>>>>> 438ad34 (update)
                     </tr>
                     @endforeach
                         </tbody>
@@ -118,12 +165,18 @@
 
 
 <!-- POP UP TAMBAH DATA-->
+<<<<<<< HEAD
 <div id="popup" style="display: none; position: fixed; top: 56%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 400px;">
     <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu Kunjungan</h4>
+=======
+<div id="popup" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
+    <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu VIP</h4>
+>>>>>>> 438ad34 (update)
     
     <form action="{{ route('vip.store') }}" method="POST">
         @csrf
         <div class="form-group">
+<<<<<<< HEAD
             <label for="nama">Undangan</label>
             <input type="text" class="form-control" id="nama" name="undangan" placeholder="Masukkan Kode Undangan" required>
         </div>
@@ -160,6 +213,163 @@
 </div>
 
 <!-- END POP UP TAMBAH DATA-->
+=======
+            <label for="kd_undangan">Kode Undangan</label>
+            <input type="text" class="form-control" id="kd_undangan" name="kd_undangan" placeholder="Masukkan Undangan">
+        </div>
+        <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
+        </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat">
+        </div>
+        <div class="form-group">
+            <label for="keperluan">Keperluan</label>
+            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan">
+        </div>
+        <div class="form-group">
+            <label for="asal_instansi">Asal Instansi</label>
+            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi">
+        </div>
+        <div class="form-group">
+            <label for="no_hp">No HP</label>
+            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP">
+        </div>
+        <div class="form-group" id="departemen">
+            <label for="departemen">Departemen</label>
+            <select class="form-control" id="departemen" name="departemen">
+                <option><-- Pilih Departemen --></option>
+                <option value="keuangan">Keuangan</option>
+                <option value="ketenagakerjaan">Ketenagakerjaan</option>
+                <option value="paud/tk">Paud/Tk</option>
+                <option value="sd">SD</option>
+                <option value="smp">SMP</option>
+               ]
+                <!-- Tambahkan opsi lainnya sesuai dengan kebutuhan -->
+            </select>
+        </div>
+        <div class="form-group" id="seksi">
+            <label for="seksi">Seksi</label>
+            <select class="form-control" id="seksi" name="seksi">
+             
+                <option value="kurikulum/penilaian">Kurikulum dan Penilaian</option>
+                <option value="sarana/prasarana">Sarana dan Prasarana</option>
+                <option value="pendidik_sd">Pendidik dan Tenaga SD</option>
+                <option value="pendidik_smp">Pendidik dan Tenaga SMP</option>
+              
+                <!-- Editkan opsi lainnya sesuai dengan kebutuhan -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status">
+                <option>Proses</option>
+                <option value="approved" >Approved</option>
+                <option value="rejected" >Rejected</option>
+                <option value="pending" >Pending</option>
+            </select>
+                <!-- Editkan opsi lainnya sesuai dengan kebutuhan -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ket">Keterangan</label>
+            <input type="text" class="form-control" id="ket" name="ket" placeholder="Masukkan Keterangan">
+        </div>
+        <div class="form-group">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary" style="margin-right: 10px; color:#fff;">Submit</button>
+            <button type="button" class="btn btn-secondary" style="color:#fff;" onclick="togglePopup()">Close</button>
+        </div>
+    </form>
+</div>
+<!-- END POP UP TAMBAH DATA-->
+@foreach($vips as $vip)
+<!-- POP UP Edit DATA-->
+<div id="popupedit{{ $vip->id }}" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
+    <!-- Konten Pop-up Edit -->
+    <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Edit Data Tamu VIP</h4>
+    
+    <form action="{{ route('vip.update', $vip->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" value="{{ $vip->nama }}">
+        </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" value="{{ $vip->alamat }}">
+        </div>
+        <div class="form-group">
+            <label for="keperluan">Keperluan</label>
+            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan" value="{{ $vip->keperluan }}">
+        </div>
+        <div class="form-group">
+            <label for="asal_instansi">Asal Instansi</label>
+            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi" value="{{ $vip->asal_instansi }}">
+        </div>
+        <div class="form-group">
+            <label for="status">No HP</label>
+            <input type="text" class="form-control" id="status" name="status" placeholder="Masukkan nomor HP" value="{{ $vip->no_hp }}">
+        </div>
+        <div class="form-group">
+            <label for="status">Tanggal</label>
+            <input type="date" class="form-control" id="status" name="tanggal" placeholder="Masukkan Tanggal" value="{{ $vip->tanggal }}">
+        </div>
+        <div class="form-group">
+            <label for="departemen">Departemen</label>
+            <select class="form-control" id="departemen" name="departemen">
+                <option value="keuangan" {{ $vip->departemen == 'keuangan' ? 'selected' : '' }}>Keuangan</option>
+                <option value="ketenagakerjaan" {{ $vip->departemen == 'ketenagakerjaan' ? 'selected' : '' }}>Ketenagakerjaan</option>
+                <option value="paud/tk" {{ $vip->departemen == 'paud/tk' ? 'selected' : '' }}>Paud/TK</option>
+                <option value="sd" {{ $vip->departemen == 'sd' ? 'selected' : '' }}>SD</option>
+                <option value="smp" {{ $vip->departemen == 'smp' ? 'selected' : '' }}>SMP</option>
+                <option value="perencanaan" {{ $vip->departemen == 'perencanaan' ? 'selected' : '' }}>Perencanaan</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="seksi">Seksi</label>
+            <select class="form-control" id="seksi" name="seksi">
+            <option value="kurikulum/penilaian" {{ $vip->seksi == 'kurikulum/penilaian' ? 'selected' : '' }}>Kurikulum/Penilaian</option>
+            <option value="sarana/prasarana" {{ $vip->seksi == 'sarana/prasarana' ? 'selected' : '' }}>Sarana/Prasarana</option>
+            <option value="pendidik_sd" {{ $vip->seksi == 'pendidik_sd' ? 'selected' : '' }}>Pendidik dan Tenaga SD</option>
+            <option value="pendidik_smp" {{ $vip->seksi == 'pendidik_smp' ? 'selected' : '' }}>Pendidik dan Tenaga Smp</option>
+            </option>
+            <!-- Tambahkan opsi lainnya sesuai dengan kebutuhan -->
+        </select>
+        </div>
+        <div class="form-group">
+    <label for="status">Status</label>
+    <select class="form-control" id="status" name="status">
+        <option value="Proses" {{ $vip->status == 'Proses' ? 'selected' : '' }}>Proses</option>
+        <option value="Approved" {{ $vip->status == 'Approved' ? 'selected' : '' }}>Approved</option>
+        <option value="Rejected" {{ $vip->status == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+        <option value="Pending" {{ $vip->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+    </select>
+</div>
+
+        <div class="form-group">
+            <label for="ket">Keterangan</label>
+            <input type="text" class="form-control" id="ket" name="ket" placeholder="Masukkan asal instansi" value="{{ $vip->ket }}">
+        </div>
+  
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-warning" style="margin-right: 10px; color:#fff;">Submit</button>
+            <button type="button" class="btn btn-secondary" style="color:#fff;" onclick="togglePopupedit('{{ $vip->id }}')">Close</button>
+        </div>
+    </form>
+</div>
+@endforeach
+
+<!-- END POP UP Edit DATA-->
+
+>>>>>>> 438ad34 (update)
 
 <script>
     // Mendapatkan tombol "Report"
@@ -188,6 +398,7 @@
         console.log('Export to Excel clicked');
     });
 
+<<<<<<< HEAD
     // Ambil elemen dropdown
 var dropdown = document.getElementById("status-dropdown");
 
@@ -220,6 +431,9 @@ dropdown.addEventListener("change", function() {
         function deleteVisitor() {
             // Logika untuk menghapus data pengunjung
         }
+=======
+
+>>>>>>> 438ad34 (update)
 
     // Function to toggle popup
     function togglePopup() {
@@ -231,6 +445,7 @@ dropdown.addEventListener("change", function() {
             }
         }
 
+<<<<<<< HEAD
         function fetchAllVipNames() {
     fetch("{{ route('all-vip-names') }}")
         .then(response => response.json())
@@ -270,5 +485,18 @@ window.onload = function() {
     fetchAllVipNames();
 };
 
+=======
+        // Function to toggle popup edit
+    function togglePopupedit(id) {
+        var popup = document.getElementById('popupedit' + id);
+        if (popup.style.display === 'none') {
+            popup.style.display = 'block';
+        } else {
+            popup.style.display = 'none';
+        }
+
+        
+    }
+>>>>>>> 438ad34 (update)
 </script>
 @endsection

@@ -14685,7 +14685,11 @@ fieldset:disabled .btn {
 .page-link {
     position: relative;
     display: block;
+<<<<<<< HEAD
     color: #0d6efd;
+=======
+    color: #e6e600;
+>>>>>>> 438ad34 (update)
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #dee2e6;
@@ -14721,8 +14725,16 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
+<<<<<<< HEAD
     background-color: #0d6efd;
     border-color: #0d6efd;
+=======
+    background-color: #001a00;
+    border-color: #001a00;
+    background-color: #55552b;
+    border-color: #55552b;
+
+>>>>>>> 438ad34 (update)
 }
 
 .page-item.disabled .page-link {
@@ -24149,6 +24161,40 @@ dl li {
     }
 }
 
+<<<<<<< HEAD
+=======
+.search {
+    --padding: 12px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 20px;
+    background: #f6f6f6;
+    transition: box-shadow 0.25s;
+}
+
+.search:focus-within {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input {
+    font-size: 14px;
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}
+
+.search-input::placeholder,
+.search-icon {
+    color: rgba(0, 0, 0, 0.25);
+}
+
+>>>>>>> 438ad34 (update)
 /* Sidebar */
 body {
     overflow-y: auto;
@@ -24160,7 +24206,11 @@ body {
 .sidebar {
     padding-top: 0px;
     /* Menambahkan ruang di bagian atas sidebar */
+<<<<<<< HEAD
     background-color: #6c757d;
+=======
+    background-color: #55552b;
+>>>>>>> 438ad34 (update)
     /* Warna latar belakang secondary */
     border-right: 1px solid #dee2e6;
     width: 250px;

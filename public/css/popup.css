@@ -64,6 +64,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     z-index: 1000;
+<<<<<<< HEAD
 }
 
 
@@ -123,3 +124,6 @@
 .search-icon {
     color: rgba(0, 0, 0, 0.25);
 }
+=======
+}
+>>>>>>> 438ad34 (update)

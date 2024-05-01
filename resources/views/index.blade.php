@@ -16,7 +16,11 @@
 <body>
 <div class="navbar">
     <div class="navbar-nav">
+<<<<<<< HEAD
     <img src="{{asset('img/mdr-logo.png')}}" alt="logo" style="width:150px"/>
+=======
+    <img src="{{asset('img/PT-PRO.png')}}" alt="logo" style="width:200px"/>
+>>>>>>> 438ad34 (update)
      
     </div>
     <div class="navbar-nav">
@@ -49,11 +53,16 @@
   <p>Tim yang bertanggung jawab atas pembuatan, pengujian, dan pemeliharaan aplikasi. Mereka merancang fitur, mengembangkan kode, dan memastikan keberfungsian aplikasi. Pengembang juga terlibat dalam menangani masukan pengguna, memperbaiki bug, dan mengimplementasikan pembaruan untuk meningkatkan kinerja dan pengalaman pengguna.</p>
   <div class="price__grid" style="display: flex; justify-content: center;">
     <div class="price__card" style="width: 19%;">
+<<<<<<< HEAD
       <div class="price__card__content">
+=======
+      <div class="price__card__content" >
+>>>>>>> 438ad34 (update)
         <h4>Muhammad Bayu </h4>
         <h3></h3>
         <div class="img-container">
     <img src="img/bayu.jpg" alt="header" class="centered-img" width="100%" />
+<<<<<<< HEAD
 </div>
 
         <p>
@@ -66,6 +75,16 @@
         </p>
       </div>
     </div>
+=======
+    </div>
+        <p style="display: flex; justify-content: center;">
+          <i class="ri-checkbox-circle-line"></i>
+          Sebagai Frontend Mobile <br>Design UI&UX <br>Backend Mobile
+        </p>
+      </div>
+    </div>
+
+>>>>>>> 438ad34 (update)
     <div class="price__card" style="width: 19%;">
       <div class="price__card__content">
         <h4>Septiananda Rifqi</h4>
@@ -73,9 +92,15 @@
         <div class="img-container">
           <img src="img/rifqi.jpg" alt="header" class="centered-img" width="100%" />
         </div>
+<<<<<<< HEAD
         <p>
           <i class="ri-checkbox-circle-line"></i>
           Smart workout plan
+=======
+        <p style="display: flex; justify-content: center;">
+          <i class="ri-checkbox-circle-line"></i>
+          Sebagai Backend Mobile <br> Frontend Website <br> Backend Website
+>>>>>>> 438ad34 (update)
         </p>
       </div>
     </div>
@@ -86,6 +111,7 @@
         <div class="img-container">
           <img src="img/firda.jpg" alt="header" class="centered-img" width="100%" />
         </div>
+<<<<<<< HEAD
         <p>
           <i class="ri-checkbox-circle-line"></i>
           Ketua Kelompok
@@ -93,6 +119,11 @@
         <p>
           <i class="ri-checkbox-circle-line"></i>
           Ambis Banget
+=======
+        <p style="display: flex; justify-content: center;">
+          <i class="ri-checkbox-circle-line"></i>
+          Sebagai Project Manager <br>Frontend Website <br>Backend Website <br>Backend Mobile
+>>>>>>> 438ad34 (update)
         </p>
       </div>
     </div>
@@ -103,9 +134,15 @@
         <div class="img-container">
           <img src="img/fanisa.jpg" alt="header" class="centered-img" width="100%" />
         </div>
+<<<<<<< HEAD
         <p>
           <i class="ri-checkbox-circle-line"></i>
           ELITE Gyms & Classes
+=======
+        <p style="display: flex; justify-content: center;">
+          <i class="ri-checkbox-circle-line"></i>
+          Sebagai Frontend Website <br> Backend Website <br>Backend Mobile
+>>>>>>> 438ad34 (update)
         </p>
       </div>
     </div>
@@ -136,6 +173,7 @@
                     <p style="font-size: 15px; font-family: serif;">LEBIH DEKAT DENGAN KAMI!</p><br>
                     <p style="color: #d9cb06;">Kunjungi Dan Temukan Kami Diberbagai Platform Social Media Untuk Mengeksplor Lebih Jauh.</p><br>
                     <div class="social-icons" style="color: #fff;">
+<<<<<<< HEAD
                         <a href="https://dispendik.jemberkab.go.id/"><i class="bi-globe" style="font-size: 20px; color:white;"></i></a>
                         &nbsp;&nbsp;
                         <a href="https://www.facebook.com/dispendik.jember/"><i class="bi-facebook" style="font-size: 20px; color:white;"></i></a>
@@ -165,6 +203,30 @@
 
 
 
+=======
+                        <a href="https://dispendik.jemberkab.go.id/pengumuman"><i class="bi-globe" style="font-size: 20px; color:white;"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://www.facebook.com/dispendik.jember/?locale=id_ID"><i class="bi-facebook" style="font-size: 20px; color:white;"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://twitter.com/diknasjember"><i class="bi-twitter" style="font-size: 20px; color:white;"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://www.instagram.com/dispendik.jember/"><i class="bi-instagram" style="font-size: 20px; color:white;"></i></a>
+                    </div>
+                <!-- </form> -->
+                </div>
+            <div class="maps-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1973.0149763259863!2d113.70262798012148!3d-8.15233048564564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7b1bfae3eeb55%3A0x3a74696b38f90783!2sPT.%20Mangli%20Djaya%20Raya!5e0!3m2!1sen!2sid!4v1649734707859!5m2!1sen!2sid&z=20" width="900" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="footer-content">
+            <p>Hak Cipta © 2024 Pantau Tamu Pro. Dibuat dengan <i class="ri-heart-fill"></i> oleh Tim Pengembang Aplikasi |</p>
+            <p>Powered By Smart IT</p>
+            <br>
+            <a href="/login">Login Admin</a>
+        </div>
+          </div>
+         
+        </div>
+       
+>>>>>>> 438ad34 (update)
         
     </footer>
 </section>

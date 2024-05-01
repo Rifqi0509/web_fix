@@ -21,7 +21,11 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-3 order-md-first image-container mt-5 d-flex flex-column align-items-center">
+<<<<<<< HEAD
             <img src="{{asset('img/form.png')}}" alt="Gambar" style="margin-top: -20px; width: 80%; height: 11%;">
+=======
+        <img src="{{asset('img/form.png')}}" alt="Gambar" style="margin-top: -20px; width: 100%; height: 70%;">
+>>>>>>> 438ad34 (update)
             <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menu
@@ -42,7 +46,12 @@
                 <!-- End Judul "Tamu Kunjungan" dan Menu Dropdown -->
 
                 <div class="card-body w-100">
+<<<<<<< HEAD
                     <table>
+=======
+                <div class="table-responsive">
+                    <table class="table">
+>>>>>>> 438ad34 (update)
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -68,6 +77,10 @@
                             @endforeach
                         </tbody>
                     </table>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 438ad34 (update)
                 </div>
             </div>
         </div>

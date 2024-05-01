@@ -10,7 +10,11 @@
     <br>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="dropdown">
+<<<<<<< HEAD
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px;">
+=======
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; color:#55552b;">
+>>>>>>> 438ad34 (update)
                     Rekap
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
@@ -27,7 +31,11 @@
                                         <th>No.</th>
                                         <th>Keterangan</th>
                                         <th>Tanggal</th>
+<<<<<<< HEAD
                                         <th>Opsi</th>
+=======
+                                    
+>>>>>>> 438ad34 (update)
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +45,7 @@
                                         <td>{{ $feedback->keterangan }}</td>
                                         <td>{{ $feedback->created_at }}</td>
                                         <td>
+<<<<<<< HEAD
                                         <button onclick="togglePopupedit({{ $feedback->id }})" class="btn btn-success" style="color: white; padding: 5px 10px; height: auto;"> 
                                                 <i class="fas fa-edit"></i>&nbsp;Edit
                                             </button><br><br>
@@ -46,6 +55,10 @@
                                             <button onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger" style="color: white; padding: 5px 10px; height: auto;">
                                                 <i class="fas fa-trash-alt"></i>&nbsp;Delete
                                             </button>
+=======
+                                           
+                    
+>>>>>>> 438ad34 (update)
                                             </form>
                                         </td>
                                     </tr>

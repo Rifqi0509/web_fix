@@ -64,7 +64,11 @@ h2 {
 }
 
 .bg-white {
+<<<<<<< HEAD
     background-color: #ffaf1a
+=======
+    background-color: #55552b;
+>>>>>>> 438ad34 (update)
 }
 
 .p-8 {
@@ -100,7 +104,11 @@ h2 {
     display: block;
     text-align: left;
     margin-bottom: 15px;
+<<<<<<< HEAD
     color: #777;
+=======
+    color: #fff;
+>>>>>>> 438ad34 (update)
     text-decoration: none;
 }
 

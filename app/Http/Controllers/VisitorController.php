@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use Maatwebsite\Excel\Facades\Excel;
+<<<<<<< HEAD
 use App\Exports\UsersExport;
+=======
+use App\Exports\VisitorExport;
+>>>>>>> 438ad34 (update)
 
 class VisitorController extends Controller
 {
@@ -90,8 +94,13 @@ class VisitorController extends Controller
 
     public function xlsx()
     {
+<<<<<<< HEAD
         // return Excel::download(new TamuExport, 'users.xlsx');
         return Excel::download(new UsersExport, 'users.xlsx');
+=======
+        
+        return Excel::download(new VisitorExport, 'visitor.xlsx');
+>>>>>>> 438ad34 (update)
     }
 
     public function cetakForm()

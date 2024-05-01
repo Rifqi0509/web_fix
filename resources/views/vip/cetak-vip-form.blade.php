@@ -19,6 +19,7 @@
                 <label for="tanggalAkhir" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="tanggalAkhir" id="tanggalAkhir" class="form-control">
             </div>
+<<<<<<< HEAD
             <div class="col-md-12 mb-3">
                 <div class="input-group">
                     <a href="" onClick="this.href='/cetak-vip-tanggal/'+document.getElementById('tanggalAwal').value +
@@ -28,10 +29,31 @@
                     </a>
                 </div>
             </div>
+=======
+           
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div class="input-group d-flex justify-content-between">
+                        <a href="" onClick="this.href='/cetak-vip-tanggal/'+document.getElementById('tanggalAwal').value +
+                    '/' +document.getElementById('tanggalAkhir').value" 
+                        target="_blank" class="btn btn-primary" style="color: #fff">Cetak Laporan 
+                            <i class="fas fa-print"></i>
+                        </a>
+                        <a href="{{ route('vip.index') }}" class="btn btn-primary ml-auto" style="color: #fff">Kembali ke Halaman Tamu</a>
+                    </div>
+                </div>
+            </div>
+
+>>>>>>> 438ad34 (update)
         </div>
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 438ad34 (update)
 <script>
     // Mendapatkan tombol "Report"
     var reportButton = document.getElementById('reportButton');

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Vip;
 use App\Exports\VipExport;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Log;
+>>>>>>> 438ad34 (update)
 
 class VipController extends Controller
 {
@@ -31,26 +35,61 @@ class VipController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
        // Validasi data yang masuk
     $request->validate([
         'undangan' => 'required|string|max:255',
+=======
+
+        Log::info('Data yang diterima:', $request->all());
+
+       // Validasi data yang masuk
+    $request->validate([
+        'kd_undangan' => 'required|string|max:255',
+>>>>>>> 438ad34 (update)
         'nama' => 'required|string|max:255',
         'alamat' => 'required|string',
         'keperluan' => 'required|string|max:255',
         'asal_instansi' => 'required|string|max:255',
         'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
         'tanggal' => 'required|date',
+<<<<<<< HEAD
     ]);
 
     // Simpan data ke database
     Vip::create([
         'undangan' => $request->undangan,
+=======
+        'departemen' => 'required|string',
+        'seksi' => 'required|string',
+        'status' => 'required|string',
+        'ket' => 'required|string',
+    ]);
+
+    // Tentukan nilai departemen sesuai permintaan
+    // $departemen = $request->has('departemen') ? $request->departemen : null;
+    // $seksi = $request->has('seksi') ? $request->seksi : null;
+    // $status = $request->has('status') ? $request->status : null;
+    // $ket = $request->has('ket') ? $request->ket : null;
+
+    // Simpan data ke database
+    Vip::create([
+        'kd_undangan' => $request->kd_undangan,
+>>>>>>> 438ad34 (update)
         'nama' => $request->nama,
         'alamat' => $request->alamat,
         'keperluan' => $request->keperluan,
         'asal_instansi' => $request->asal_instansi,
         'no_hp' => $request->no_hp,
         'tanggal' => $request->tanggal,
+<<<<<<< HEAD
+=======
+        'departemen' => $request->departemen,
+        'seksi' => $request->seksi,
+        'status' => $request->status,
+        'ket' => $request->ket,
+        
+>>>>>>> 438ad34 (update)
     ]);
 
     // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
@@ -70,7 +109,14 @@ class VipController extends Controller
      */
     public function edit(string $id)
     {
+<<<<<<< HEAD
         //
+=======
+        $vip = Vip::findOrFail($id);
+
+        // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
+        return view('vip.edit', compact('vip'));
+>>>>>>> 438ad34 (update)
     }
 
     /**
@@ -78,17 +124,66 @@ class VipController extends Controller
      */
     public function update(Request $request, string $id)
     {
+<<<<<<< HEAD
         //
     }
 
+=======
+       // Temukan profil admin berdasarkan ID
+    $vip = Vip::findOrFail($id);
+
+    // Validasi data yang masuk
+    $request->validate([
+        'kd_undangan' => 'required|string|max:255',
+        'nama' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'keperluan' => 'required|string|max:255',
+        'asal_instansi' => 'required|string|max:255',
+        'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
+        'tanggal' => 'required|date',
+        'departemen' => 'required|string',
+        'seksi' => 'required|string',
+        'status' => 'required|string',
+        'ket' => 'required|string',
+    ]);
+
+    // Lakukan update berdasarkan input yang diterima
+    $vip->kd_undangan = $request->kd_undangan;
+    $vip->nama = $request->nama;
+    $vip->alamat = $request->alamat;
+    $vip->keperluan = $request->keperluan;
+    $vip->asal_instansi = $request->asal_instansi;
+    $vip->no_hp = $request->no_hp;
+    $vip->tanggal = $request->tanggal;
+    $vip->departemen = $request->departemen;
+    $vip->seksi = $request->seksi;
+    $vip->status = $request->status;
+    $vip->ket = $request->ket;
+
+    // Simpan perubahan
+    $vip->save();
+        // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
+        return redirect()->route('vip.index')->with('success', 'Data berhasil disimpan!');
+    }
+>>>>>>> 438ad34 (update)
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
+<<<<<<< HEAD
         //
     }
 
+=======
+        $vip = Vip::findOrFail($id);
+        $vip->delete();
+    
+        return redirect()->route('vip.index')->with('success', 'Data berhasil dihapus!');
+    }
+
+
+>>>>>>> 438ad34 (update)
     public function xlsx()
     {
         return Excel::download(new VipExport, 'vip.xlsx');
@@ -111,3 +206,9 @@ class VipController extends Controller
         return response()->json($vipNames);
     }
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 438ad34 (update)
