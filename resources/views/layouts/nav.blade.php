@@ -1,32 +1,13 @@
 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <!-- <a class="navbar-brand brand-logo me-5" href="/dashboard"><img src="img/mdr-logo.png" class="me-2" alt="logo"/></a> -->
         <!-- <p>Admin</p> -->
-<<<<<<< HEAD
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="img/mdr-logo.png" alt="logo"/></a>
-=======
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="img/PT-PRO.png" alt="logo"/></a>
->>>>>>> 438ad34 (update)
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="ti-view-list"></span>
         </button>
-<<<<<<< HEAD
-        <!-- <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="ti-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
-          </li>
-        </ul> -->
-=======
         
->>>>>>> 438ad34 (update)
         <ul class="navbar-nav navbar-nav-right">
 
            

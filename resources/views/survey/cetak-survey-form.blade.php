@@ -8,11 +8,7 @@
 
 <div class="card">
     <div class="card-body">
-<<<<<<< HEAD
-        <h4 class="font-weight-bold mb-0">Data Tamu Kunjungan</h4>
-=======
         <h4 class="font-weight-bold mb-0">Data Survey Pengguna</h4>
->>>>>>> 438ad34 (update)
         <br>
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -23,17 +19,6 @@
                 <label for="tanggalAkhir" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="tanggalAkhir" id="tanggalAkhir" class="form-control">
             </div>
-<<<<<<< HEAD
-            <div class="col-md-12 mb-3">
-                <div class="input-group">
-                    <a href="" onClick="this.href='/cetak-survey-tanggal/'+document.getElementById('tanggalAwal').value +
-                    '/' +document.getElementById('tanggalAkhir').value" 
-                    target="_blank" class="btn btn-primary btn-block" style="color: #fff">Cetak Laporan 
-                        <i class="fas fa-print"></i>
-                    </a>
-                </div>
-            </div>
-=======
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="input-group d-flex justify-content-between">
@@ -47,15 +32,10 @@
                 </div>
             </div>
 
->>>>>>> 438ad34 (update)
         </div>
     </div>
 </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 438ad34 (update)
 <script>
     // Mendapatkan tombol "Report"
     var reportButton = document.getElementById('reportButton');

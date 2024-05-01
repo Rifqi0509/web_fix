@@ -42,10 +42,7 @@ class ProfileController extends Controller
         'password' => $hashedPassword,
     ]);
 
-<<<<<<< HEAD
-=======
     
->>>>>>> 438ad34 (update)
     return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
     }
 

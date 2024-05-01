@@ -156,15 +156,9 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-<<<<<<< HEAD
-        /*
-         * Package Service Providers...
-         */
-=======
         
          Maatwebsite\Excel\ExcelServiceProvider::class,
          
->>>>>>> 438ad34 (update)
 
         /*
          * Application Service Providers...
@@ -188,10 +182,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-<<<<<<< HEAD
-=======
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
->>>>>>> 438ad34 (update)
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

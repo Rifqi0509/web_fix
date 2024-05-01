@@ -8,20 +8,13 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\VisitorController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Akun_vipController;
->>>>>>> 438ad34 (update)
 use App\Http\Controllers\VipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SurveyController;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 438ad34 (update)
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,10 +41,7 @@ Route::post('/login', [LoginController::class, 'login']);
     
         Route::get('/table',[HomeController::class,'tabler'])->name('table');
         Route::get('/element',[VisitorController::class,'index'])->name('element');
-<<<<<<< HEAD
-=======
         Route::get('/Struktur-organisasi',[HomeController::class,'struktur'])->name('struktur')->middleware('auth.admin');
->>>>>>> 438ad34 (update)
         Route::post('/tambahdata', [VisitorController::class, 'store'])->name('tambahdata');
 
         Route::middleware(['auth:admins', 'auth.admin'])->group(function () {
@@ -83,8 +73,6 @@ Route::post('/login', [LoginController::class, 'login']);
             Route::get('/cetak-vip-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-vip-tanggal');  
             Route::get('/excel-vip', 'xlsx')->name('excel-vip');
             Route::get('/all-vip-names', 'getAllVipNames')->name('all-vip-names');
-<<<<<<< HEAD
-=======
             Route::post('/vip', [VipController::class, 'store'])->name('vip.store');
             Route::put('/vip/{id}', [VipController::class, 'update'])->name('vip.update');
             
@@ -98,18 +86,13 @@ Route::post('/login', [LoginController::class, 'login']);
             Route::get('/all-akun_vip-names', 'getAllAkun_vipNames')->name('all-akun_vip-names');
             Route::post('/akun_vip', [Akun_vipController::class, 'store'])->name('akun_vip.store');
             Route::put('/akun_vip/{id}', [Akun_vipController::class, 'update'])->name('akun_vip.update');
->>>>>>> 438ad34 (update)
             
         });
         
         Route::controller(VisitorController::class)->group(function () {
             Route::get('/cetak-tamu-form', 'cetakForm')->name('cetak-tamu-form');
             Route::get('/cetak-tamu-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-tamu-tanggal');  
-<<<<<<< HEAD
-            Route::get('/excel', 'xlsx')->name('xlsx'); 
-=======
             Route::get('/excel-kunjungan', 'xlsx')->name('excel-kunjungan');
->>>>>>> 438ad34 (update)
             Route::get('/all-visitor-names', 'getAllVisitorNames')->name('all-visitor-names');
             
         });
@@ -117,10 +100,7 @@ Route::post('/login', [LoginController::class, 'login']);
         Route::controller(SurveyController::class)->group(function () {
             Route::resource('/survey', SurveyController::class);
             Route::get('/cetak-questions', 'cetak')->name('cetak-questions'); 
-<<<<<<< HEAD
-=======
             Route::get('/cetak-survey-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-survey-tanggal');  
->>>>>>> 438ad34 (update)
             Route::get('/excel-questions', 'xlsx')->name('excel-questions');
             
         });

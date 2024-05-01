@@ -7,16 +7,6 @@
 <link rel="stylesheet" href="css/popup.css">
 </head>
 
-<<<<<<< HEAD
-<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
-    <div class="search" style="max-width: 300px;"> 
-        <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
-        <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
-    </div>
-</div>
-=======
-
->>>>>>> 438ad34 (update)
 
 <div class="card">
     <div class="card-body">
@@ -24,24 +14,13 @@
     <br>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="dropdown">
-<<<<<<< HEAD
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px;">
-=======
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; color:#55552b;">
->>>>>>> 438ad34 (update)
                     Rekap
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
                 <li><a class="dropdown-item" href="{{ route('cetak-vip-form') }}" id="exportPdfButton"><i class="fas fa-file-pdf"></i> PDF</a></li>
                     <li><a class="dropdown-item" href="{{ route('excel-vip') }}" id="exportExcelButton"><i class="fas fa-file-excel"></i> Excel</a></li>
-                </ul>
-            </div>
-            
-<<<<<<< HEAD
-            <button class="btn btn-dark" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
-=======
             <button class="btn btn-success" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
->>>>>>> 438ad34 (update)
                 <i class="fas fa-plus"></i> &nbsp;Tambah Data
             </button>
         </div>
@@ -57,17 +36,11 @@
                         <th>Keperluan</th>
                         <th>Asal Instansi</th>
                         <th>No HP</th>
-<<<<<<< HEAD
-                        <th>Tanggal</th>
-                        <th>Status</th>
-                        <th>Input Keterangan</th>
-=======
                         <th>Rencana Tanggal Pertemuan</th>
                         <th>Status</th>
                         <th>Departemen</th>
                         <th>Seksi</th>
                         <th>Keterangan</th>
->>>>>>> 438ad34 (update)
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -81,38 +54,13 @@
                     @foreach($vips as $index => $vip)
                     <tr>
                         <td>{{ ($vips->currentPage() - 1) * $vips->perPage() + $loop->index + 1 }}</td>
-<<<<<<< HEAD
-                        <td>{{ $vip->undangan }}</td>
-=======
                         <td>{{ $vip->kd_undangan }}</td>
->>>>>>> 438ad34 (update)
                         <td>{{ $vip->nama }}</td>
                         <td>{{ $vip->alamat }}</td>
                         <td>{{ $vip->keperluan }}</td>
                         <td>{{ $vip->asal_instansi }}</td>
                         <td>{{ $vip->no_hp }}</td>
                         <td>{{ $vip->tanggal }}</td>
-<<<<<<< HEAD
-                        <td>
-                        <select id="status-dropdown">
-                            <option>Proses</option>
-                            <option value="approved" class="approved">Approved</option>
-                            <option value="rejected" class="rejected">Rejected</option>
-                            <option value="pending" class="pending">Pending</option>
-                        </select>
-                        </td>
-                        <td>
-                            <input type="text" placeholder="Input Keterangan" />
-                        </td>
-                        <td>
-                        <button onclick="editVisitor()" class="btn btn-success" style="color: white; padding: 5px 10px; height: auto;">
-                            <i class="fas fa-edit"></i>&nbsp;Edit
-                        </button>&nbsp;
-                        <button onclick="deleteVisitor()" class="btn btn-danger" style="color: white; padding: 5px 10px; height: auto;">
-                            <i class="fas fa-trash-alt"></i>&nbsp;Delete
-                        </button>
-                        </td>
-=======
                         <td>{{ $vip->status }}</td>
                         <td>{{ $vip->departemen }}</td>
                         <td>{{ $vip->seksi }}</td>
@@ -133,7 +81,6 @@
     </div>
 </td>
 
->>>>>>> 438ad34 (update)
                     </tr>
                     @endforeach
                         </tbody>
@@ -165,55 +112,12 @@
 
 
 <!-- POP UP TAMBAH DATA-->
-<<<<<<< HEAD
-<div id="popup" style="display: none; position: fixed; top: 56%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 400px;">
-    <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu Kunjungan</h4>
-=======
 <div id="popup" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
     <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu VIP</h4>
->>>>>>> 438ad34 (update)
     
     <form action="{{ route('vip.store') }}" method="POST">
         @csrf
         <div class="form-group">
-<<<<<<< HEAD
-            <label for="nama">Undangan</label>
-            <input type="text" class="form-control" id="nama" name="undangan" placeholder="Masukkan Kode Undangan" required>
-        </div>
-        <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
-        </div>
-        <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" required>
-        </div>
-        <div class="form-group">
-            <label for="keperluan">Keperluan</label>
-            <input type="text" class="form-control" id="keperluan" name="keperluan" placeholder="Masukkan keperluan" required>
-        </div>
-        <div class="form-group">
-            <label for="asal_instansi">Asal Instansi</label>
-            <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi" required>
-        </div>
-        <div class="form-group">
-            <label for="no_hp">No HP</label>
-            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP" required pattern="08[0-9]{10,}">
-        </div>
-
-        <div class="form-group">
-            <label for="status">Tanggal</label>
-            <input type="date" class="form-control" id="status" name="tanggal" placeholder="Masukkan Tanggal" required>
-        </div>
-        <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
-            <button type="button" class="btn btn-secondary" onclick="togglePopup()">Close</button>
-        </div>
-    </form>
-</div>
-
-<!-- END POP UP TAMBAH DATA-->
-=======
             <label for="kd_undangan">Kode Undangan</label>
             <input type="text" class="form-control" id="kd_undangan" name="kd_undangan" placeholder="Masukkan Undangan">
         </div>
@@ -369,7 +273,6 @@
 
 <!-- END POP UP Edit DATA-->
 
->>>>>>> 438ad34 (update)
 
 <script>
     // Mendapatkan tombol "Report"
@@ -398,42 +301,6 @@
         console.log('Export to Excel clicked');
     });
 
-<<<<<<< HEAD
-    // Ambil elemen dropdown
-var dropdown = document.getElementById("status-dropdown");
-
-// Tambahkan event listener untuk menangani perubahan nilai dropdown
-dropdown.addEventListener("change", function() {
-    // Ambil nilai (value) dari opsi yang dipilih
-    var selectedValue = dropdown.value;
-
-    // Terapkan warna ke dropdown berdasarkan nilai yang dipilih
-    switch (selectedValue) {
-        case "pending":
-            dropdown.style.backgroundColor = "yellow"; // Warna untuk pending
-            break;
-        case "approved":
-            dropdown.style.backgroundColor = "green"; // Warna untuk approved
-            break;
-        case "rejected":
-            dropdown.style.backgroundColor = "red"; // Warna untuk rejected
-            break;
-        default:
-            dropdown.style.backgroundColor = ""; // Kembalikan ke warna default jika tidak ada nilai yang cocok
-            break;
-    }
-});
-
-        function editVisitor() {
-            // Logika untuk mengedit data pengunjung
-        }
-
-        function deleteVisitor() {
-            // Logika untuk menghapus data pengunjung
-        }
-=======
-
->>>>>>> 438ad34 (update)
 
     // Function to toggle popup
     function togglePopup() {
@@ -445,47 +312,6 @@ dropdown.addEventListener("change", function() {
             }
         }
 
-<<<<<<< HEAD
-        function fetchAllVipNames() {
-    fetch("{{ route('all-vip-names') }}")
-        .then(response => response.json())
-        .then(data => {
-            const searchInput = document.getElementById("searchInput");
-            data.forEach(name => {
-                const option = document.createElement("option");
-                option.value = name;
-                searchInput.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching vip names:', error));
-}
-
-function searchData() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table-list");
-    tbody = table.getElementsByTagName("tbody")[0];
-    tr = tbody.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2]; // Index 2 is for the Name column
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-
-// Call the function to fetch all VIP names when the page loads
-window.onload = function() {
-    fetchAllVipNames();
-};
-
-=======
         // Function to toggle popup edit
     function togglePopupedit(id) {
         var popup = document.getElementById('popupedit' + id);
@@ -497,6 +323,5 @@ window.onload = function() {
 
         
     }
->>>>>>> 438ad34 (update)
 </script>
 @endsection

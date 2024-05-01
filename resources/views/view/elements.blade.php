@@ -21,26 +21,15 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
  
             <div class="dropdown">
-<<<<<<< HEAD
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px;">
-=======
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; color:#55552b;">
->>>>>>> 438ad34 (update)
                     Rekap
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
                     <li><a class="dropdown-item" href="{{ route('cetak-tamu-form') }}" id="exportPdfButton"><i class="fas fa-file-pdf"></i> PDF</a></li>
-<<<<<<< HEAD
-                    <li><a class="dropdown-item" href="{{ route('xlsx') }}" id="exportExcelButton"><i class="fas fa-file-excel"></i> Excel</a></li>
-                </ul>
-            </div>
-            <button class="btn btn-dark" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
-=======
                     <li><a class="dropdown-item" href="{{ route('excel-kunjungan') }}" id="exportExcelButton"><i class="fas fa-file-excel"></i> Excel</a></li>
                 </ul>
             </div>
             <button class="btn btn-success" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
->>>>>>> 438ad34 (update)
                 <i class="fas fa-plus"></i> &nbsp;Tambah Data 
             </button>
         </div>
