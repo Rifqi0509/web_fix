@@ -16,7 +16,6 @@ h2 {
     font-family: "Times New Roman", Times, serif;
 }
 
-
 .containergambar {
     display: block;
     /* Agar margin otomatis (margin:auto) bekerja */
@@ -28,7 +27,6 @@ h2 {
 
     /* Membuat container berada di tengah */
 }
-
 
 /* Style untuk input email dan password */
 .email,
@@ -64,11 +62,7 @@ h2 {
 }
 
 .bg-white {
-<<<<<<< HEAD
-    background-color: #ffaf1a
-=======
     background-color: #55552b;
->>>>>>> 438ad34 (update)
 }
 
 .p-8 {
@@ -104,11 +98,7 @@ h2 {
     display: block;
     text-align: left;
     margin-bottom: 15px;
-<<<<<<< HEAD
-    color: #777;
-=======
     color: #fff;
->>>>>>> 438ad34 (update)
     text-decoration: none;
 }
 

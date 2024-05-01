@@ -20,6 +20,9 @@
                 <ul class="dropdown-menu" aria-labelledby="exportDropdownButton">
                 <li><a class="dropdown-item" href="{{ route('cetak-vip-form') }}" id="exportPdfButton"><i class="fas fa-file-pdf"></i> PDF</a></li>
                     <li><a class="dropdown-item" href="{{ route('excel-vip') }}" id="exportExcelButton"><i class="fas fa-file-excel"></i> Excel</a></li>
+                </ul>
+            </div>
+            
             <button class="btn btn-success" type="button" style="padding: 5px 10px; color: #fff; margin-right: 10px;" onclick="togglePopup()">
                 <i class="fas fa-plus"></i> &nbsp;Tambah Data
             </button>
