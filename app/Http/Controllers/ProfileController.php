@@ -61,32 +61,23 @@ class ProfileController extends Controller
 
     public function update(Request $request, string $id)
     {
-    // Temukan profil admin berdasarkan ID
-    $profile = Admin::findOrFail($id);
+        $profiles = Admin::findOrFail($id);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:admins,email,'.$profiles->id,
+            'role' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8', 
+        ]);
 
-    // Validasi data yang masuk
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:admins,email,'.$profile->id,
-        'role' => 'required|string|max:255',
-        'password' => 'nullable|string|min:8', // Password menjadi opsional
-    ]);
+        $profiles->name = $request->name;
+        $profiles->email = $request->email;
+        $profiles->role = $request->role;
+        if ($request->password) {
+            $profiles->password = Hash::make($request->password);
+        }
+        $profiles->save();
 
-    // Lakukan update berdasarkan input yang diterima
-    $profile->name = $request->name;
-    $profile->email = $request->email;
-    $profile->role = $request->role;
-
-    // Jika ada password baru yang diberikan, hash dan simpan
-    if ($request->password) {
-        $profile->password = Hash::make($request->password);
-    }
-
-    // Simpan perubahan
-    $profile->save();
-
-    // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
-    return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('profile.index')->with('success', 'Data berhasil disimpan!');
     }
 
     /**

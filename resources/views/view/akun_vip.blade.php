@@ -34,7 +34,6 @@
                                     <th>username</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                   
                                     <th>Password</th>
                                     <th>Alamat</th>
                                     <th>No Telepon</th>

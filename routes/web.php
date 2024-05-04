@@ -73,8 +73,6 @@ Route::post('/login', [LoginController::class, 'login']);
             Route::get('/cetak-vip-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-vip-tanggal');  
             Route::get('/excel-vip', 'xlsx')->name('excel-vip');
             Route::get('/all-vip-names', 'getAllVipNames')->name('all-vip-names');
-            Route::post('/vip', [VipController::class, 'store'])->name('vip.store');
-            // Route::put('/vip/{id}', [VipController::class, 'update'])->name('vip.update');
             
         });
 
@@ -84,9 +82,6 @@ Route::post('/login', [LoginController::class, 'login']);
             Route::get('/cetak-akun-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-akun-tanggal');  
             Route::get('/excel-akun', 'xlsx')->name('excel-akun');
             Route::get('/all-akun_vip-names', 'getAllAkun_vipNames')->name('all-akun_vip-names');
-            Route::post('/akun_vip', [Akun_vipController::class, 'store'])->name('akun_vip.store');
-            // Route::put('/akun_vip/{id}', [Akun_vipController::class, 'update'])->name('akun_vip.update');
-            
         });
         
         Route::controller(VisitorController::class)->group(function () {

@@ -50,12 +50,6 @@ class VipController extends Controller
         'ket' => 'required|string',
     ]);
 
-    // Tentukan nilai departemen sesuai permintaan
-    // $departemen = $request->has('departemen') ? $request->departemen : null;
-    // $seksi = $request->has('seksi') ? $request->seksi : null;
-    // $status = $request->has('status') ? $request->status : null;
-    // $ket = $request->has('ket') ? $request->ket : null;
-
     // Simpan data ke database
     Vip::create([
         'kd_undangan' => $request->kd_undangan,
@@ -89,10 +83,10 @@ class VipController extends Controller
      */
     public function edit(string $id)
     {
-        $vip = Vip::findOrFail($id);
+        $vips = Vip::findOrFail($id);
 
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
-        return view('vip.edit', compact('vip'));
+        return view('vip.edit', compact('vips'));
     }
 
     /**
@@ -100,49 +94,34 @@ class VipController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       // Temukan profil admin berdasarkan ID
-    $vip = Vip::findOrFail($id);
-
-    // Validasi data yang masuk
-    $request->validate([
-        'kd_undangan' => 'required|string|max:255',
-        'nama' => 'required|string|max:255',
-        'alamat' => 'required|string',
-        'keperluan' => 'required|string|max:255',
-        'asal_instansi' => 'required|string|max:255',
-        'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
-        'tanggal' => 'required|date',
-        'departemen' => 'required|string',
-        'seksi' => 'required|string',
-        'status' => 'required|string',
-        'ket' => 'required|string',
-    ]);
-
-    // Lakukan update berdasarkan input yang diterima
-    $vip->kd_undangan = $request->kd_undangan;
-    $vip->nama = $request->nama;
-    $vip->alamat = $request->alamat;
-    $vip->keperluan = $request->keperluan;
-    $vip->asal_instansi = $request->asal_instansi;
-    $vip->no_hp = $request->no_hp;
-    $vip->tanggal = $request->tanggal;
-    $vip->departemen = $request->departemen;
-    $vip->seksi = $request->seksi;
-    $vip->status = $request->status;
-    $vip->ket = $request->ket;
-
-    // Simpan perubahan
-    $vip->save();
+        $request->validate([
+            'kd_undangan' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'keperluan' => 'required|string|max:255',
+            'asal_instansi' => 'required|string|max:255',
+            'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
+            'tanggal' => 'required|date',
+            'status' => 'required|string|in:Proses,Approved,Rejected,Pending', // Menggunakan in: untuk memastikan nilai yang diterima sesuai dengan yang diizinkan
+            'departemen' => 'required|string|in:keuangan,ketenagakerjaan,paud/tk,sd,smp,perencanaan',
+            'seksi' => 'required|string|in:kurikulum/penilaian,sarana/prasarana,pendidik_sd,pendidik_smp',
+            'ket' => 'nullable|string',
+        ]);
+    
+        $vips = Vip::findOrFail($id);
+        $vips->update($request->all());
+    
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return redirect()->route('vip.index')->with('success', 'Data berhasil disimpan!');
     }
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $vip = Vip::findOrFail($id);
-        $vip->delete();
+        $vips = Vip::findOrFail($id);
+        $vips->delete();
     
         return redirect()->route('vip.index')->with('success', 'Data berhasil dihapus!');
     }

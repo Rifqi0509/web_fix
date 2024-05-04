@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class akun_vipModels extends Model
+class AkunVip extends Model
 {
     protected $table = 'akun_vips';
     protected $fillable = [

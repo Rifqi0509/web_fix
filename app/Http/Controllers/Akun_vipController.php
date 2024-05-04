@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\akun_vipModels;
+use App\Models\AkunVip;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Hash;
 class Akun_vipController extends Controller
 {
     public function index(){
-        $akun_vips = akun_vipModels::orderBy('created_at', 'desc')->paginate(6);
+        $akun_vips = AkunVip::orderBy('created_at', 'desc')->paginate(6);
         
         return view ('view.akun_vip', compact('akun_vips'));
     }
 
     public function create()
     {
-        //
+        return view('akun_vip.create');
     }
 
     
@@ -37,7 +37,7 @@ class Akun_vipController extends Controller
     //Hash password sebelum menyimpannya
     $hashedPassword = Hash::make($request->password);
     
-    akun_vipModels::create([
+    AkunVip::create([
         'username' => $request->username,
         'name' => $request->name,
         'email' => $request->email,
@@ -46,27 +46,13 @@ class Akun_vipController extends Controller
         'no_telepon' => $request->no_telepon,
         'tanggal_lahir' => $request->tanggal_lahir,
     ]);
-
-    // Buat objek DataRequest baru
-    // $newRequest = new akun_vipModels();
-    // $newRequest->username = $validatedData['username'];
-    // $newRequest->name = $validatedData['name'];
-    // $newRequest->email = $validatedData['email'];
-    // $newRequest->password = $validatedData['password'];
-    // $newRequest->alamat = $validatedData['alamat'];
-    // $newRequest->no_telepon = $validatedData['no_telepon'];
-    // $newRequest->tanggal_lahir = $validatedData['tanggal_lahir'];
-
-    //  // Simpan request baru
-    //  $newRequest->save();
-
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return redirect()->route('akun_vip.index')->with('success', 'Data berhasil disimpan!');
     }
 
     public function edit(string $id)
     {
-        $akun_vips = akun_vipModels::findOrFail($id);
+        $akun_vips = AkunVip::findOrFail($id);
 
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return view('akun_vip.edit', compact('akun$akun_vips'));
@@ -77,7 +63,7 @@ class Akun_vipController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $akun_vips = akun_vipModels::findOrFail($id);
+        $akun_vips = AkunVip::findOrFail($id);
 
        // Validasi data yang masuk
     $request->validate([
@@ -94,21 +80,21 @@ class Akun_vipController extends Controller
     $hashedPassword = Hash::make($request->password);
 
     // Lakukan update berdasarkan input yang diterima
-    $akun_vip->username = $request->username;
-    $akun_vip->name = $request->name;
-    $akun_vip->email = $request->email;
-    $akun_vip->password = $request->password;
-    $akun_vip->alamat = $request->alamat;
-    $akun_vip->no_telepon = $request->no_telepon;
-    $akun_vip->tanggal_lahir = $request->tanggal_lahir;
+    $akun_vips->username = $request->username;
+    $akun_vips->name = $request->name;
+    $akun_vips->email = $request->email;
+    $akun_vips->password = $request->password;
+    $akun_vips->alamat = $request->alamat;
+    $akun_vips->no_telepon = $request->no_telepon;
+    $akun_vips->tanggal_lahir = $request->tanggal_lahir;
 
     // Jika ada password baru yang diberikan, hash dan simpan
     if ($request->password) {
-        $akun_vip->password = Hash::make($request->password);
+        $akun_vips->password = Hash::make($request->password);
     }
 
     // Simpan perubahan
-    $akun_vip->save();
+    $akun_vips->save();
 
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return redirect()->route('akun_vip.index')->with('success', 'Data berhasil disimpan!');
@@ -116,14 +102,14 @@ class Akun_vipController extends Controller
 
     public function destroy(string $id)
     {
-        $akun_vips = akun_vipModels::findOrFail($id);
+        $akun_vips = AkunVip::findOrFail($id);
         $akun_vips->delete();
     
         return redirect()->route('akun_vip.index')->with('success', 'Profil berhasil dihapus!');
     }
 
     public function cetak(){
-        $akun_vips = akun_vipModels::all();
+        $akun_vips = AkunVip::all();
         return view ('rekap.cetak-akun', compact('akun$akun_vips'));
     }
 
@@ -134,7 +120,7 @@ class Akun_vipController extends Controller
 
     public function getAllUserNames()
     {
-        $akun_vipNames = akun_vipModels::pluck('name')->toArray();
+        $akun_vipNames = AkunVip::pluck('name')->toArray();
         return response()->json($akun_vipNames);
     }
 }

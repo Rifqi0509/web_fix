@@ -196,6 +196,7 @@
 </div>
 <!-- END POP UP TAMBAH DATA-->
 @foreach($vips as $vip)
+
 <!-- POP UP Edit DATA-->
 <div id="popupedit{{ $vip->id }}" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
     <!-- Konten Pop-up Edit -->
@@ -204,6 +205,11 @@
     <form action="{{ route('vip.update', $vip->id) }}" method="POST">
         @csrf
         @method('PUT')
+        <div class="form-group">
+            <label for="kd_undangan">Kode Undangan</label>
+            <input type="text" class="form-control" id="kd_undangan" name="kd_undangan" placeholder="Masukkan kd_undangan" value="{{ $vip->kd_undangan }}">
+        </div>
+
         <div class="form-group">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" value="{{ $vip->nama }}">
@@ -221,12 +227,12 @@
             <input type="text" class="form-control" id="asal_instansi" name="asal_instansi" placeholder="Masukkan asal instansi" value="{{ $vip->asal_instansi }}">
         </div>
         <div class="form-group">
-            <label for="status">No HP</label>
-            <input type="text" class="form-control" id="status" name="status" placeholder="Masukkan nomor HP" value="{{ $vip->no_hp }}">
+            <label for="no_hp">No HP</label>
+            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor HP" value="{{ $vip->no_hp }}">
         </div>
         <div class="form-group">
-            <label for="status">Tanggal</label>
-            <input type="date" class="form-control" id="status" name="tanggal" placeholder="Masukkan Tanggal" value="{{ $vip->tanggal }}">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal" value="{{ $vip->tanggal }}">
         </div>
         <div class="form-group">
             <label for="departemen">Departemen</label>

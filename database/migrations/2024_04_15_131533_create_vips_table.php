@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('kd_undangan');
             $table->string('nama');
             $table->text('alamat');
+            $table->string('keperluan');
             $table->string('asal_instansi');
             $table->string('no_hp');
-            $table->string('keperluan');
-            $table->enum('departemen', ['keuangan', 'ketenagakerjaan', 'paud/tk','sd', 'smp', 'perencanaan'])->nullable(); 
-            $table->enum('seksi', ['kurikulum/penilaian', 'sarana/prasarana', 'pendidik_sd','pendidik_smp',])->nullable(); 
             $table->date('tanggal');
             $table->enum('status', ['Proses', 'Approved', 'Rejected','Pending'])->nullable(); 
+            $table->enum('departemen', ['keuangan', 'ketenagakerjaan', 'paud/tk','sd', 'smp', 'perencanaan'])->nullable(); 
+            $table->enum('seksi', ['kurikulum/penilaian', 'sarana/prasarana', 'pendidik_sd','pendidik_smp',])->nullable(); 
             $table->string('ket')->nullable(); 
             $table->timestamps();
         });
