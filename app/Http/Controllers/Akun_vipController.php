@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\AkunVip;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\UsersExport;
+use App\Exports\AkunVIPExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -110,7 +110,7 @@ class Akun_vipController extends Controller
 
     public function cetak(){
         $akun_vips = AkunVip::all();
-        return view ('rekap.cetak-akun', compact('akun$akun_vips'));
+        return view ('rekap.cetak-akun_vip', compact('akun_vips'));
     }
 
     public function xlsx()
@@ -118,7 +118,7 @@ class Akun_vipController extends Controller
         return Excel::download(new AkunVIPExport, 'akun_vip.xlsx');
     }
 
-    public function getAllUserNames()
+    public function getAllAkun_VipNames()
     {
         $akun_vipNames = AkunVip::pluck('name')->toArray();
         return response()->json($akun_vipNames);

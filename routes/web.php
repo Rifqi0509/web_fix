@@ -78,10 +78,10 @@ Route::post('/login', [LoginController::class, 'login']);
 
         Route::controller(Akun_vipController::class)->group(function () {
             Route::resource('/akun_vip', Akun_vipController::class);
-            Route::get('/cetak-akun-form', 'cetakForm')->name('cetak-akun-form');
+            Route::get('/cetak-akun_vip', 'cetak')->name('cetak-akun_vip');
             Route::get('/cetak-akun-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-akun-tanggal');  
             Route::get('/excel-akun', 'xlsx')->name('excel-akun');
-            Route::get('/all-akun_vip-names', 'getAllAkun_vipNames')->name('all-akun_vip-names');
+            Route::get('/all-akun_vip-names', 'getAllAkun_VipNames')->name('all-akun_vip-names');
         });
         
         Route::controller(VisitorController::class)->group(function () {
