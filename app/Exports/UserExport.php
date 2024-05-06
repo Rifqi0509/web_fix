@@ -2,27 +2,25 @@
 
 namespace App\Exports;
 
-use App\Models\AkunVip;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class AkunVIPExport implements FromCollection, WithHeadings
+class UserExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return AkunVip::all();
+        return User::all();
     }
 
     public function headings(): array
-{
-    return [
+    {
+        return [
         ['DATA TAMU AKUN VIP'], // Judul di atas kolom
         ['ID', 'Username', 'Nama', 'Email', 'Password', 'Alamat', 'No. Telepon', 'Tanggal Lahir', 'Created-at', 'Updated-at',],
     ];
-}
-
-
+    }
 }

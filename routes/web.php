@@ -25,7 +25,7 @@ use App\Http\Controllers\SurveyController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/Daftar-Tamu-Kunjungan', [FormulirController::class, 'daftar'])->name('daftartamukunjungan');
 Route::get('/Survey-Kepuasan-Pengguna', [SurveyController::class, 'survey'])->name('surveypengguna');
 // Route::get('/Survey-Kepuasan-Pengguna', [FormulirController::class, 'submitForm']);
@@ -73,11 +73,10 @@ Route::post('/login', [LoginController::class, 'login']);
             Route::get('/cetak-vip-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-vip-tanggal');  
             Route::get('/excel-vip', 'xlsx')->name('excel-vip');
             Route::get('/all-vip-names', 'getAllVipNames')->name('all-vip-names');
-            
         });
 
-        Route::controller(Akun_vipController::class)->group(function () {
-            Route::resource('/akun_vip', Akun_vipController::class);
+        Route::controller(UserController::class)->group(function () {
+            Route::resource('/akun_vip', UserController::class);
             Route::get('/cetak-akun_vip', 'cetak')->name('cetak-akun_vip');
             Route::get('/cetak-akun-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-akun-tanggal');  
             Route::get('/excel-akun', 'xlsx')->name('excel-akun');

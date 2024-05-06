@@ -44,6 +44,7 @@ class VipController extends Controller
         'asal_instansi' => 'required|string|max:255',
         'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
         'tanggal' => 'required|date',
+        'jam' => 'required|date_format:H:i', // Validasi jam
         'departemen' => 'required|string',
         'seksi' => 'required|string',
         'status' => 'required|string',
@@ -59,6 +60,7 @@ class VipController extends Controller
         'asal_instansi' => $request->asal_instansi,
         'no_hp' => $request->no_hp,
         'tanggal' => $request->tanggal,
+        'jam' => $request->jam,
         'departemen' => $request->departemen,
         'seksi' => $request->seksi,
         'status' => $request->status,
@@ -102,18 +104,20 @@ class VipController extends Controller
             'asal_instansi' => 'required|string|max:255',
             'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
             'tanggal' => 'required|date',
+            'jam' => 'required|string:H:i', // Validasi jam
             'status' => 'required|string|in:Proses,Approved,Rejected,Pending', // Menggunakan in: untuk memastikan nilai yang diterima sesuai dengan yang diizinkan
             'departemen' => 'required|string|in:keuangan,ketenagakerjaan,paud/tk,sd,smp,perencanaan',
             'seksi' => 'required|string|in:kurikulum/penilaian,sarana/prasarana,pendidik_sd,pendidik_smp',
             'ket' => 'nullable|string',
         ]);
     
-        $vips = Vip::findOrFail($id);
-        $vips->update($request->all());
+        $vip = Vip::findOrFail($id);
+        $vip->update($request->all());
     
         // Redirect atau kembali ke halaman sebelumnya dengan notifikasi
         return redirect()->route('vip.index')->with('success', 'Data berhasil disimpan!');
     }
+    
     
     /**
      * Remove the specified resource from storage.

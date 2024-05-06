@@ -3,10 +3,17 @@
 @section('content')
 <head>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="css/popup.css">
 </head>
 
+<div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+    <div class="search" style="max-width: 300px;"> 
+        <input id="searchInput" class="search-input" type="text" placeholder="search by name"></input>
+        <span class="search-icon material-symbols-outlined" role="button" onclick="searchData()">Search</span>
+    </div>
+</div>
 
 <div class="card">
     <div class="card-body">
@@ -40,6 +47,7 @@
                         <th>Asal Instansi</th>
                         <th>No HP</th>
                         <th>Rencana Tanggal Pertemuan</th>
+                        <th>Waktu</th>
                         <th>Status</th>
                         <th>Departemen</th>
                         <th>Seksi</th>
@@ -64,10 +72,12 @@
                         <td>{{ $vip->asal_instansi }}</td>
                         <td>{{ $vip->no_hp }}</td>
                         <td>{{ $vip->tanggal }}</td>
+                        <td>{{ $vip->jam }}</td>
                         <td>{{ $vip->status }}</td>
                         <td>{{ $vip->departemen }}</td>
                         <td>{{ $vip->seksi }}</td>
                         <td>{{ $vip->ket }}</td>
+                      
                         
                         <td>
     <div style="display: flex; align-items: center;">
@@ -83,7 +93,6 @@
         </form>
     </div>
 </td>
-
                     </tr>
                     @endforeach
                         </tbody>
@@ -188,6 +197,10 @@
             <label for="tanggal">Tanggal</label>
             <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
         </div>
+        <div class="form-group">
+            <label for="jam">Jam</label>
+            <input type="time" class="form-control" id="jam" name="jam" placeholder="Masukkan Jam">
+        </div>
         <div style="text-align: center;">
             <button type="submit" class="btn btn-primary" style="margin-right: 10px; color:#fff;">Submit</button>
             <button type="button" class="btn btn-secondary" style="color:#fff;" onclick="togglePopup()">Close</button>
@@ -233,6 +246,10 @@
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
             <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal" value="{{ $vip->tanggal }}">
+        </div>
+        <div class="form-group">
+            <label for="jam">Jam</label>
+            <input type="time" class="form-control" id="jam" name="jam" placeholder="Masukkan Jam" value="{{ $vip->jam }}">
         </div>
         <div class="form-group">
             <label for="departemen">Departemen</label>
@@ -328,9 +345,47 @@
             popup.style.display = 'block';
         } else {
             popup.style.display = 'none';
-        }
-
-        
+        }   
     }
+
+    function fetchAllVipNames() {
+    fetch("{{ route('all-vip-names') }}")
+        .then(response => response.json())
+        .then(data => {
+            const searchInput = document.getElementById("searchInput");
+            data.forEach(name => {
+                const option = document.createElement("option");
+                option.value = name;
+                searchInput.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching vip names:', error));
+}
+
+function searchData() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table-list");
+    tbody = table.getElementsByTagName("tbody")[0];
+    tr = tbody.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; // Index 2 is for the Name column
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// Call the function to fetch all VIP names when the page loads
+window.onload = function() {
+    fetchAllVipNames();
+};
+
 </script>
 @endsection

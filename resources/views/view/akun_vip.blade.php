@@ -55,28 +55,27 @@
                                 <tbody>
                                    <!-- Looping through vips, but limited to 10 per page -->
                                    @php
-                                    $currentPage = $akun_vips->currentPage() ?? 1; // Get current page
+                                    $currentPage = $users->currentPage() ?? 1; // Get current page
                                     $startNumber = ($currentPage - 1) * 10 + 1; // Calculate starting number
                                     @endphp
                                     <!-- Looping through profiles, but limited to 10 per page -->
-                                    @foreach($akun_vips as $index => $akun_vip)
+                                    @foreach($users as $index => $user)
                                     <tr>
-                                        <td>{{ ($akun_vips->currentPage() - 1) * $akun_vips->perPage() + $loop->index + 1 }}</td>
-                                        <td>{{ $akun_vip->username }}</td>
-                                        <td>{{ $akun_vip->name }}</td>
-                                        <td>{{ $akun_vip->email }}</td>
-                                       
-                                        <td>{{ $akun_vip->password }}</td>
-                                        <td>{{ $akun_vip->alamat }}</td>
-                                        <td>{{ $akun_vip->no_telepon }}</td>
-                                        <td>{{ $akun_vip->tanggal_lahir }}</td>
-                                        <td>{{ $akun_vip->created_at }}</td>
-                                        <td>{{ $akun_vip->updated_at }}</td>
+                                        <td>{{ ($users->currentPage() - 1) * $users->perPage() + $loop->index + 1 }}</td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->password }}</td>
+                                        <td>{{ $user->alamat }}</td>
+                                        <td>{{ $user->no_telepon }}</td>
+                                        <td>{{ $user->tanggal_lahir }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $user->updated_at }}</td>
                                         <td class="d-flex align-items-center">
-                                            <button onclick="togglePopupedit({{ $akun_vip->id }})" class="btn btn-primary" style="color: white; padding: 5px 10px; height: auto;"> 
+                                            <button onclick="togglePopupedit({{ $user->id }})" class="btn btn-primary" style="color: white; padding: 5px 10px; height: auto;"> 
                                                 <i class="fas fa-edit"></i>&nbsp;Edit
                                             </button>&nbsp;
-                                            <form action="{{ route('akun_vip.destroy', $akun_vip->id) }}" method="POST" class="delete-form">
+                                            <form action="{{ route('akun_vip.destroy', $user->id) }}" method="POST" class="delete-form">
                                             @method('delete')
                                             @csrf
                                             <button onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger" style="color: white; padding: 5px 10px; height: auto;">
@@ -96,16 +95,16 @@
          <br></br>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-            <li class="page-item {{ ($akun_vips->onFirstPage()) ? 'disabled' : '' }}">
-                <a class="page-link" href="{{ $akun_vips->previousPageUrl() }}">Previous</a>
+            <li class="page-item {{ ($users->onFirstPage()) ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $users->previousPageUrl() }}">Previous</a>
             </li>
-            @for ($i = 1; $i <= $akun_vips->lastPage(); $i++)
-            <li class="page-item {{ ($akun_vips->currentPage() == $i) ? 'active' : '' }}">
-                <a class="page-link" href="{{ $akun_vips->url($i) }}">{{ $i }}</a>
+            @for ($i = 1; $i <= $users->lastPage(); $i++)
+            <li class="page-item {{ ($users->currentPage() == $i) ? 'active' : '' }}">
+                <a class="page-link" href="{{ $users->url($i) }}">{{ $i }}</a>
             </li>
             @endfor
-            <li class="page-item {{ ($akun_vips->currentPage() == $akun_vips->lastPage()) ? 'disabled' : '' }}">
-                <a class="page-link" href="{{ $akun_vips->nextPageUrl() }}">Next</a>
+            <li class="page-item {{ ($users->currentPage() == $users->lastPage()) ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $users->nextPageUrl() }}">Next</a>
             </li>
             </ul>
         </nav>
@@ -158,43 +157,43 @@
 <!-- END POP UP TAMBAH DATA -->
 
 <!-- POP UP EDIT DATA -->
-@foreach($akun_vips as $akun_vip)
-<div id="popupedit{{ $akun_vip->id }}" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
-    <form action="{{ route('akun_vip.update', $akun_vip->id) }}" method="POST">
+@foreach($users as $user)
+<div id="popupedit{{ $user->id }}" style="display: none; position: fixed; top: 55%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ccc; /* abu-abu yang lebih muda */ box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); max-width: 400px; max-height: 80vh; overflow-y: auto; z-index: 9999;">
+    <form action="{{ route('akun_vip.update', $user->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">
             <label for="username">username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" value="{{ $akun_vip->username }}">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" value="{{ $user->username }}">
         </div>
         <div class="form-group">
             <label for="name">Nama</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama" value="{{ $akun_vip->name }}">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama" value="{{ $user->name }}">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan asal email" value="{{ $akun_vip->email }}">
+            <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan asal email" value="{{ $user->email }}">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan password" value="{{ $akun_vip->password }}">
+            <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan password" value="{{ $user->password }}">
         </div>
         <div class="form-group">
             <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" value="{{ $akun_vip->alamat }}">
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" value="{{ $user->alamat }}">
         </div>
         <div class="form-group">
             <label for="no_telepon">No. Telepon</label>
-            <input type="text" class="form-control" id="no_telepon" name="no_telepon" placeholder="Masukkan no_telepon" value="{{ $akun_vip->no_telepon }}">
+            <input type="text" class="form-control" id="no_telepon" name="no_telepon" placeholder="Masukkan no_telepon" value="{{ $user->no_telepon }}">
         </div>
         <div class="form-group">
             <label for="tanggal_lahir">tanggal_lahir</label>
-            <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan tanggal_lahir" value="{{ $akun_vip->tanggal_lahir }}">
+            <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan tanggal_lahir" value="{{ $user->tanggal_lahir }}">
         </div>
         
         <div style="text-align: center;">
             <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Update</button>
-            <button type="button" class="btn btn-secondary" onclick="togglePopupedit('{{ $akun_vip->id }}')">Close</button>
+            <button type="button" class="btn btn-secondary" onclick="togglePopupedit('{{ $user->id }}')">Close</button>
         </div>
     </form>
 </div>

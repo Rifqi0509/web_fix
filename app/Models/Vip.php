@@ -17,6 +17,7 @@ class Vip extends Model
         'asal_instansi',
         'no_hp',
         'tanggal',
+        'jam',
         'status',
         'departemen',
         'seksi',
