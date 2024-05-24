@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -16,14 +17,17 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
             return response()->json([
                 'success' => true,
             ]);
         } else {
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid credentials',
+            ], 401); // Unauthorized status code
         }
     }
+
 
     public function register(Request $request)
     {
@@ -36,21 +40,35 @@ class AuthController extends Controller
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required|date',
-             // Add validation rules for additional fields as needed
+            // Add validation rules for additional fields as needed
         ]);
 
-       // Create a new user
-       $user = new User();
-       $user->username = $validatedData['username'];
-       $user->name = $validatedData['name'];
-       $user->email = $validatedData['email'];
-       $user->password = Hash::make($validatedData['password']);
-       $user->alamat = $validatedData['alamat'];
-       $user->no_telepon = $validatedData['no_telepon'];
-       $user->tanggal_lahir = $validatedData['tanggal_lahir'];
-       $user->save();
+        // Create a new user
+        $user = new User();
+        $user->username = $validatedData['username'];
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->alamat = $validatedData['alamat'];
+        $user->no_telepon = $validatedData['no_telepon'];
+        $user->tanggal_lahir = $validatedData['tanggal_lahir'];
+        $user->save();
 
         // Beri respons ke aplikasi Flutter
-        return response()->json(['message' => 'User registered successfully'], 200);
+        return response()->json(['message' => 'User registered successfully', 'name' => $validatedData['name']], 200);
+    }
+
+    public function show()
+    {
+        try {
+            $user = User::all();
+
+            return response()->json($user, 200);
+        } catch (\Exception $e) {
+            // Log the error message
+            Log::error('Failed to fetch user.', ['error' => $e->getMessage()]);
+
+            return response()->json(['message' => 'Failed to fetch user'], 500);
+        }
     }
 }

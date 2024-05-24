@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\flutter\AuthController;
 use App\Http\Controllers\flutter\DataController;
+use App\Http\Controllers\flutter\VipsController;
+use App\Http\Controllers\flutter\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,11 @@ use App\Http\Controllers\flutter\DataController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/user_flutter', [AuthController::class, 'show']);
 Route::post('/login_flutter', [AuthController::class, 'login']);
 Route::post('/register_flutter', [AuthController::class, 'register']);
 Route::post('/feedback_flutter', [DataController::class, 'feedback']);
+Route::get('/vip_flutter', [VipsController::class, 'show']);
+Route::post('/vips_flutter', [VipsController::class, 'store']);
+Route::get('/questions_flutter', [QuestionController::class, 'show']);
+Route::post('/survey_flutter', [QuestionController::class, 'store']);

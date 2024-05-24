@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('asal_instansi');
             $table->string('no_hp');
             $table->date('tanggal');
-            $table->time('jam');
+            $table->string('jam');
             $table->enum('status', ['Proses', 'Approved', 'Rejected','Pending'])->nullable(); 
             $table->enum('departemen', ['keuangan', 'ketenagakerjaan', 'paud/tk','sd', 'smp', 'perencanaan'])->nullable(); 
             $table->enum('seksi', ['kurikulum/penilaian', 'sarana/prasarana', 'pendidik_sd','pendidik_smp',])->nullable(); 

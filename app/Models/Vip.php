@@ -13,14 +13,14 @@ class Vip extends Model
         'kd_undangan',
         'nama',
         'alamat',
-        'keperluan',
         'asal_instansi',
         'no_hp',
-        'tanggal',
-        'jam',
-        'status',
+        'keperluan',
         'departemen',
         'seksi',
+        'tanggal',
+        'status',
         'ket',
+        'jam',
     ];
 }

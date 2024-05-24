@@ -46,6 +46,7 @@
                         <th>Asal Instansi</th>
                         <th>No HP</th>
                         <th>Tanggal</th>
+                        <th>Tanda Tangan</th> <!-- New column for signature -->
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +65,7 @@
                         <td>{{ $visitor->asal_instansi }}</td>
                         <td>{{ $visitor->no_hp }}</td>
                         <td>{{ $visitor->tanggal }}</td>
+                        <td><img src="{{ asset($visitor->tanda_tangan) }}" style="max-width: 100px;"></td> <!-- Display signature as image -->
                     </tr>
                     @endforeach
                 </tbody>
