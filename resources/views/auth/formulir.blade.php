@@ -20,7 +20,7 @@
                 <img src="{{asset('img/form.png')}}" alt="Gambar" style="width: 80%; height: 20%;" class="mx-auto d-block">
                 <!-- Tautan terpisah di bawah gambar -->
                 <a class="btn btn-secondary mt-3" href="{{ route('form-kunjungan') }}">Formulir Kunjungan</a>
-                <a class="btn btn-secondary mt-1" href="{{ route('daftartamukunjungan') }}">Buku Kunjungan Tamu</a>
+                <!-- <a class="btn btn-secondary mt-1" href="{{ route('daftartamukunjungan') }}">Buku Kunjungan Tamu</a> -->
                 <a class="btn btn-secondary mt-1" href="/">Home</a>
             </div>
         </div>

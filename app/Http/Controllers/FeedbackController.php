@@ -31,17 +31,15 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'keterangan' => 'required',
-        ]);
+    $request->validate([
+        'keterangan' => 'required|string|max:5000',
+    ]);
 
-        Feedback::create($validatedData);
+    // Save the feedback (pseudo-code, adjust as per your logic)
+    Feedback::create($request->all());
 
-        // $feedback = new Feedback();
-        // $feedback->keterangan = $request->input('feedback');
-        // $feedback->save();
-
-        return redirect()->back()->with('success', 'Masukan berhasil disimpan.');
+    // Set a session flash message
+    return redirect()->route('home')->with('status', 'Your message has been sent. Thank you!');
     }
 
     /**

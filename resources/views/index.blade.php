@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/orange1.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -290,50 +290,24 @@ Pantau tamu dengan mudah dan aman menggunakan aplikasi kami. Lacak kunjungan, ke
             </div>
           </div>
 
-          <div class="col-lg-7">
-  <form action="/feedback" method="post" class="php-email-form">
-    @csrf <!-- Menambahkan token CSRF untuk keamanan jika menggunakan Laravel -->
-    <div class="row gy-4">
-      <div class="col-md-12">
-        <p>Berikan feedback Anda dan bantu kami meningkatkan pengalaman Anda di website ini. Terima kasih!</p>
-        <label for="feedback" class="pb-2">Message</label>
-        <textarea class="form-control" name="keterangan" rows="10" id="feedback" required=""></textarea>
-      </div>
-
-      <div class="col-md-12 text-center">
-        <div class="sent-message">Your message has been sent. Thank you!</div>
-        <button type="submit">Send Message</button>
-      </div>
+<div class="col-lg-7">
+  <form action="{{ route('feedback.store') }}" method="POST" >
+  @csrf 
+  <div class="row gy-4">
+    <div class="col-md-12">
+      <p>Berikan feedback Anda dan bantu kami meningkatkan pengalaman Anda di website ini. Terima kasih!</p>
+      <label for="keterangan" class="pb-2">Message</label>
+      <textarea class="form-control" name="keterangan" rows="10" id="keterangan" required=""></textarea>
     </div>
+    <div class="col-md-12 text-center">
+  <button type="submit" class="btn btn-primary" style="background-color: #eb5d1e; border-color: orange;">Send Message</button>
+</div>
+
+  </div>
   </form>
-</div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
+</div>
 
   <footer id="footer" class="footer position-relative">
-
-    <!-- <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <div class="container footer-top">
       <div class="row gy-4">
@@ -342,22 +316,19 @@ Pantau tamu dengan mudah dan aman menggunakan aplikasi kami. Lacak kunjungan, ke
             <span class="sitename">Dinas Pendidikan Kabupaten Jember</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>Jl. DR. Soebandi No.29 </p>
-            <p>Kreongan Atas, Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
-            <p class="mt-3"><strong>Telepon:</strong> <span>0331487028</span></p>
-            <p><strong>Email:</strong> <span>dispendik@jemberkab.go.id</span></p>
+            <p>Bersama Membangun Generasi Cerdas dan Berkarakter </p> 
           </div>
         </div>
 
-          <!-- <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Useful Links</h4>
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Menu Utama</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#home">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
-
+              <li><i class="bi bi-chevron-right"></i> <a href="#about">About</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#contact">Contact</a></li>
             </ul>
-          </div> -->
+          </div>
 
 
 
@@ -366,6 +337,7 @@ Pantau tamu dengan mudah dan aman menggunakan aplikasi kami. Lacak kunjungan, ke
           <p>Ikuti Media Sosial Kami Untuk Mendapatkan Informasi Menarik Lainnya</p>
           <div class="social-links d-flex">
             <a href="https://www.facebook.com/dispendik.jember/"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/dispendik.jember?igsh=Mnk1bGdzYXp1MzFt"><i class="bi bi-instagram"></i></a>
             <a href="https://www.youtube.com/channel/UCoGNlbM_8QMv7XCTPiVxMbQ/featured"><i class="bi bi-youtube"></i></a>
           </div>
         </div>

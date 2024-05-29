@@ -24,10 +24,8 @@
 <body>
     <div class="container-fluid mt-5">
         <div class="sidebar">
-            <!-- Sidebar content here -->
             <div class="image-container d-flex flex-column justify-content-end" style="background-color: #f4f4f4; padding: 20px; color: rgb(19, 5, 5);">
                 <img src="{{asset('img/form.png')}}" alt="Gambar" style="width: 80%; height: 20%;" class="mx-auto d-block">
-                <!-- Tautan terpisah di bawah gambar -->
                 <a class="btn btn-secondary mt-3" href="{{ route('form-kunjungan') }}">Formulir Kunjungan</a>
                 <a class="btn btn-secondary mt-1" href="{{ route('daftartamukunjungan') }}">Buku Kunjungan Tamu</a>
                 <a class="btn btn-secondary mt-1" href="/">Home</a>
@@ -37,11 +35,9 @@
             <div class="col-md-3"></div>
             <div class="col-md-9">
                 <div class="card">
-                    <!-- Judul "Tamu Kunjungan" dan Menu Dropdown -->
                     <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                         <h2 class="card-title">Daftar Tamu Kunjungan</h2>
                     </div>
-                    <!-- End Judul "Tamu Kunjungan" dan Menu Dropdown -->
 
                     <div class="card-body w-100">
                         <div class="table-responsive">
@@ -55,6 +51,7 @@
                                         <th>Asal Instansi</th>
                                         <th>No HP</th>
                                         <th>Tanggal</th>
+                                        <th>Tanda Tangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +64,7 @@
                                         <td>{{ $visitor->asal_instansi }}</td>
                                         <td>{{ $visitor->no_hp }}</td>
                                         <td>{{ $visitor->tanggal }}</td>
+                                        <td><img src="{{ asset($visitor->tanda_tangan) }}" style="max-width: 100px;"></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -27,7 +27,6 @@
                                         <th>No.</th>
                                         <th>Keterangan</th>
                                         <th>Tanggal</th>
-                                    
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,11 +35,6 @@
                                         <td>{{ ($feedbacks->currentPage() - 1) * $feedbacks->perPage() + $loop->index + 1 }}</td>
                                         <td>{{ $feedback->keterangan }}</td>
                                         <td>{{ $feedback->created_at }}</td>
-                                        <td>
-                                           
-                    
-                                            </form>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

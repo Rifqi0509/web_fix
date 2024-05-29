@@ -17,8 +17,19 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user(); // Mendapatkan pengguna yang diautentikasi
+
             return response()->json([
                 'success' => true,
+                'user' => [
+                    'id' => $user->id,
+                    'username' => $user->username,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'alamat' => $user->alamat,
+                    'no_telepon' => $user->no_telepon,
+                    'tanggal_lahir' => $user->tanggal_lahir,
+                ],
             ]);
         } else {
             return response()->json([
@@ -55,7 +66,39 @@ class AuthController extends Controller
         $user->save();
 
         // Beri respons ke aplikasi Flutter
-        return response()->json(['message' => 'User registered successfully', 'name' => $validatedData['name']], 200);
+        return response()->json(['message' => 'User registered successfully'], 200);
+    }
+    public function updateProfile(Request $request)
+    {
+        // Tambahkan validasi untuk tanggal lahir
+        $request->validate([
+            'id' => 'required|exists:users,id',
+            'username' => 'required|max:255',
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'alamat' => 'required',
+            'no_telepon' => 'required',
+            'tanggal_lahir' => 'required|date',  // Validasi untuk tanggal lahir
+        ]);
+
+        $user = User::find($request->id);
+
+        // Perbarui data pengguna dengan data yang diterima dari request
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->alamat = $request->alamat;
+        $user->no_telepon = $request->no_telepon;
+        $user->tanggal_lahir = $request->tanggal_lahir;  // Tambahkan tanggal lahir
+
+        // Simpan perubahan
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Profile updated successfully',
+            'user' => $user,
+        ]);
     }
 
     public function show()

@@ -29,3 +29,4 @@ Route::get('/vip_flutter', [VipsController::class, 'show']);
 Route::post('/vips_flutter', [VipsController::class, 'store']);
 Route::get('/questions_flutter', [QuestionController::class, 'show']);
 Route::post('/survey_flutter', [QuestionController::class, 'store']);
+Route::post('/update_profile', [AuthController::class, 'updateProfile']);

@@ -38,7 +38,17 @@ class VisitorController extends Controller
             'asal_instansi' => 'required|string|max:255',
             'no_hp' => 'required|string|regex:/^08[0-9]{10,}$/|max:255', // Dimulai dengan "08" dan minimal 12 karakter
             'tanggal' => 'required|date',
+            'signature' => 'required'
         ]);
+        $signatureData = $request->input('signature');
+        $signatureData = str_replace('data:image/png;base64,', '', $signatureData);
+        $signatureData = str_replace(' ', '+', $signatureData);
+        $signatureImage = base64_decode($signatureData);
+        $signaturePath = 'signatures/' . uniqid() . '.png'; // Menyimpan di folder public/signatures
+        file_put_contents(public_path($signaturePath), $signatureImage);
+
+        // Tambahkan path tanda tangan ke data yang divalidasi
+        $validatedData['tanda_tangan'] = $signaturePath;
     
         // Simpan data ke database
         Visitor::create([

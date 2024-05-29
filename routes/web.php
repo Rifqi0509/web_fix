@@ -27,7 +27,7 @@ use App\Http\Controllers\SurveyController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/Daftar-Tamu-Kunjungan', [FormulirController::class, 'daftar'])->name('daftartamukunjungan');
 Route::get('/Survey-Kepuasan-Pengguna', [SurveyController::class, 'survey'])->name('surveypengguna');
 // Route::get('/Survey-Kepuasan-Pengguna', [FormulirController::class, 'submitForm']);
@@ -98,7 +98,7 @@ Route::controller(SurveyController::class)->group(function () {
 });
 
 Route::controller(FeedbackController::class)->group(function () {
-    Route::resource('/feedback', FeedbackController::class);
+    Route::resource('/feedback', FeedbackController::class); 
     Route::get('/cetak-feedback-form', 'cetakForm')->name('cetak-feedback-form');
     Route::get('/cetak-feedback-tanggal/{tanggalAwal}/{tanggalAkhir}', 'cetakTanggal')->name('cetak-feedback-tanggal');
     Route::get('/excel-feedback', 'xlsx')->name('excel-feedback');

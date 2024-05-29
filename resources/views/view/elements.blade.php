@@ -65,7 +65,7 @@
                         <td>{{ $visitor->asal_instansi }}</td>
                         <td>{{ $visitor->no_hp }}</td>
                         <td>{{ $visitor->tanggal }}</td>
-                        <td><img src="{{ asset($visitor->tanda_tangan) }}" style="max-width: 100px;"></td> <!-- Display signature as image -->
+                        <td><img src="{{ asset($visitor->tanda_tangan) }}" style="max-width: 100px;"></td>
                     </tr>
                     @endforeach
                 </tbody>
