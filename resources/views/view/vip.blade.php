@@ -49,6 +49,7 @@
                         <th>Departemen</th>
                         <th>Seksi</th>
                         <th>Keterangan</th>
+                        <th>Tanda Tangan</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -74,8 +75,11 @@
                         <td>{{ $vip->departemen }}</td>
                         <td>{{ $vip->seksi }}</td>
                         <td>{{ $vip->ket }}</td>
-
-
+                        <td>
+                        @if($vip->tanda_tangan)
+                        <img src="{{ asset($vip->tanda_tangan) }}" alt="Tanda Tangan" style="width: 150px;">
+                        @endif
+                        </td>
                         <td>
                             <div style="display: flex; align-items: center;">
                                 <button onclick="togglePopupedit({{ $vip->id }})" class="btn btn-primary" style="color: white; padding: 5px 10px; height: auto;">

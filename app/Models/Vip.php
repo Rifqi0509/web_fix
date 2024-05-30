@@ -22,5 +22,6 @@ class Vip extends Model
         'status',
         'ket',
         'jam',
+        'tanda_tangan',
     ];
 }

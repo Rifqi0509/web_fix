@@ -97,7 +97,7 @@
 <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 400px;">
     <h4 style="margin-top: 0; margin-bottom: 20px; text-align: center;">Tambah Data Tamu Kunjungan</h4>
     
-    <form action="/tambahdata" method="POST">
+    <form action="{{route('tambahdata')}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="nama">Nama</label>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('departemen', ['keuangan', 'ketenagakerjaan', 'paud/tk','sd', 'smp', 'perencanaan'])->nullable(); 
             $table->enum('seksi', ['kurikulum/penilaian', 'sarana/prasarana', 'pendidik_sd','pendidik_smp',])->nullable(); 
             $table->string('ket')->nullable(); 
+            $table->string('tanda_tangan')->nullable();
             $table->timestamps();
         });
     }

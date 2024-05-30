@@ -25,7 +25,7 @@ Route::get('/user_flutter', [AuthController::class, 'show']);
 Route::post('/login_flutter', [AuthController::class, 'login']);
 Route::post('/register_flutter', [AuthController::class, 'register']);
 Route::post('/feedback_flutter', [DataController::class, 'feedback']);
-Route::get('/vip_flutter', [VipsController::class, 'show']);
+Route::get('/vip_flutter/{nama}', [VipsController::class, 'show']);
 Route::post('/vips_flutter', [VipsController::class, 'store']);
 Route::get('/questions_flutter', [QuestionController::class, 'show']);
 Route::post('/survey_flutter', [QuestionController::class, 'store']);

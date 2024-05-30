@@ -10,17 +10,21 @@ use Illuminate\Support\Facades\Log;
 
 class VipsController extends Controller
 {
-    public function show()
+    public function show($nama = null)
     {
         try {
-            $vip = Vip::all();
+            // Mengambil semua data VIP, dengan atau tanpa filter nama
+            $vip = Vip::when($nama, function ($query, $nama) {
+                return $query->where('nama', $nama);
+            })
+                ->get();
 
             return response()->json($vip, 200);
         } catch (\Exception $e) {
-            // Log the error message
-            Log::error('Failed to fetch vip.', ['error' => $e->getMessage()]);
+            // Mencatat pesan kesalahan dengan konteks
+            Log::error('Gagal mengambil data VIP.', ['error' => $e->getMessage()]);
 
-            return response()->json(['message' => 'Failed to fetch vip'], 500);
+            return response()->json(['message' => 'Gagal mengambil data VIP'], 500);
         }
     }
     public function store(Request $request)

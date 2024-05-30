@@ -49,7 +49,7 @@
                     </div>
                     <br>
                         <div style="display: flex; justify-content: center;">
-                            <a href="/" class="forgot-password">Klik Untuk Kembali ke Halaman Home!</a>
+                            <a href="{{route('home')}}" class="forgot-password">Klik Untuk Kembali ke Halaman Home!</a>
                         </div>
                 </form>
             </div>

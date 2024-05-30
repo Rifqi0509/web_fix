@@ -34,7 +34,7 @@
                         <h2 class="card-title text-center">Formulir Tamu Kunjungan</h2>
                     </div>
                     <div class="card-body">
-                        <form action="/daftar" method="post">
+                        <form action="{{route('daftar')}}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="nama">Nama</label>
