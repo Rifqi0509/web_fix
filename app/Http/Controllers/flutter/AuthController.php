@@ -44,9 +44,9 @@ class AuthController extends Controller
     {
         // Validasi data registrasi
         $validatedData = $request->validate([
-            'username' => 'required|unique:users|max:255',
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
+            'username' => 'required|max:255',
+            'name' => 'required|unique:users|max:255',
+            'email' => 'required|max:255',
             'password' => 'required|min:6',
             'alamat' => 'required',
             'no_telepon' => 'required',

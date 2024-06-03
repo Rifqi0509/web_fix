@@ -1,10 +1,17 @@
 @extends('app')
 @section('content')
 <style>
-.bg-secondary {
-    background-color: #6c757d; /* Ganti dengan warna secondary yang diinginkan */
-    /* Tambahan gaya CSS lainnya sesuai kebutuhan */
-}
+    .bg-secondary {
+        background-color: #6c757d; /* Customize secondary color */
+    }
+    .card-title {
+        text-align: center;
+    }
+    .view-details {
+        display: block;
+        text-align: right;
+        color: #007bff;
+    }
 </style>
 
 <div class="row">
@@ -20,144 +27,111 @@
     </div>
 </div>
 
-<?php
-        // Lakukan koneksi ke database (contoh menggunakan PDO)
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=dispendik', 'root', '');
-            $stmt = $pdo->prepare('SELECT COUNT(*) AS total_tamu FROM tamu');
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $totalTamu = $result['total_tamu'];
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    ?>
-<div class="row">
-    <div class="col-md-3 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <p class="card-title text-md-center text-xl-left">Jumlah Tamu</p>
-                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?php echo $totalTamu; ?></h3>
-                    <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
-                </div>
-                <!-- Tambahkan jarak menggunakan margin -->
-                <p class="mb-4"></p> <!-- Aturan baru -->
-                <!-- Tanda panah untuk "view details" -->
-                <a href="{{ route('element') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
-                <!--<p class="mb-0 mt-2 text-danger">view<span class="text-black ms-1"><small>detail</small></span></p>-->
-            </div>
-        </div>
-    </div>
+@php
+$totalTamu = 0;
+$totalVip = 0;
+$totalProfile = 0;
+$totalSurvey = 0;
+$totalFeedback = 0;
 
-    <?php
-// Lakukan koneksi ke database (contoh menggunakan PDO)
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=dispendik', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=framewor_pantautamupro', 'framewor_pantautamupro', 'PAJ-tif2024');
+    
+    $stmt = $pdo->prepare('SELECT COUNT(*) AS total_tamu FROM tamu');
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalTamu = $result['total_tamu'];
+
     $stmt = $pdo->prepare('SELECT COUNT(*) AS total_vip FROM vip');
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $totalVip = $result['total_vip'];
+
+    $stmt = $pdo->prepare('SELECT COUNT(*) AS total_profile FROM profiles');
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalProfile = $result['total_profile'];
+
+    $stmt = $pdo->prepare('SELECT COUNT(*) AS total_survey FROM survey_questions');
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalSurvey = $result['total_survey'];
+
+    $stmt = $pdo->prepare('SELECT COUNT(*) AS total_feedback FROM feedback');
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalFeedback = $result['total_feedback'];
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-?>
-<div class="col-md-3 grid-margin stretch-card">
-    <div class="card" class="bg-secondary">
-        <div class="card-body">
-            <p class="card-title text-md-center text-xl-left">Jumlah Tamu VIP</p>
-            <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?php echo $totalVip; ?></h3>
-                <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
-            </div>
-            <!-- Tambahkan jarak menggunakan margin -->
-            <p class="mb-4"></p> <!-- Aturan baru -->
-                <!-- Tanda panah untuk "view details" -->
-                <a href="{{ route('vip.index') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
-                <!--<p class="mb-0 mt-2 text-danger">view<span class="text-black ms-1"><small>detail</small></span></p>-->
+@endphp
+
+<div class="row">
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Jumlah Tamu</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{ $totalTamu }}</h3>
+                    <i class="ti-user icon-md text-muted"></i>
+                </div>
+                <p class="mb-4"></p>
+                <a href="{{ route('element') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
 
-    <?php
-        // Lakukan koneksi ke database (contoh menggunakan PDO)
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=dispendik', 'root', '');
-            $stmt = $pdo->prepare('SELECT COUNT(*) AS total_profile FROM profiles');
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $totalProfile = $result['total_profile'];
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    ?>
     <div class="col-md-3 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title text-md-center text-xl-left">Jumlah Akun</p>
-                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?php echo $totalProfile; ?></h3>
-                    <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                <p class="card-title">Jumlah Tamu VIP</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{ $totalVip }}</h3>
+                    <i class="ti-user icon-md text-muted"></i>
                 </div>
-                <!-- Tambahkan jarak menggunakan margin -->
-                <p class="mb-4"></p> <!-- Aturan baru -->
-                <!-- Tanda panah untuk "view details" -->
+                <p class="mb-4"></p>
+                <a href="{{ route('vip.index') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">Jumlah Akun</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{ $totalProfile }}</h3>
+                    <i class="ti-user icon-md text-muted"></i>
+                </div>
+                <p class="mb-4"></p>
                 <a href="{{ route('profile.index') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <?php
-        // Lakukan koneksi ke database (contoh menggunakan PDO)
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=dispendik', 'root', '');
-            $stmt = $pdo->prepare('SELECT COUNT(*) AS total_survey FROM survey_questions');
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $totalSurvey = $result['total_survey'];
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    ?>
     <div class="col-md-3 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title text-md-center text-xl-left">Jumlah Survey</p>
-                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?php echo $totalSurvey; ?></h3>
-                    <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                <p class="card-title">Jumlah Survey</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{ $totalSurvey }}</h3>
+                    <i class="ti-user icon-md text-muted"></i>
                 </div>
-                <p class="mb-4"></p> 
+                <p class="mb-4"></p>
                 <a href="{{ route('survey.index') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
 
-    <?php
-        // Lakukan koneksi ke database (contoh menggunakan PDO)
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=dispendik', 'root', '');
-            $stmt = $pdo->prepare('SELECT COUNT(*) AS total_feedback FROM feedback');
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $totalFeedback = $result['total_feedback'];
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    ?>
     <div class="col-md-3 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title text-md-center text-xl-left">Jumlah Feedback</p>
-                <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?php echo $totalFeedback; ?></h3>
-                    <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                <p class="card-title">Jumlah Feedback</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{ $totalFeedback }}</h3>
+                    <i class="ti-user icon-md text-muted"></i>
                 </div>
-                <!-- Tambahkan jarak menggunakan margin -->
-                <p class="mb-4"></p> <!-- Aturan baru -->
-                <!-- Tanda panah untuk "view details" -->
+                <p class="mb-4"></p>
                 <a href="{{ route('feedback.index') }}" class="view-details">View Details <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
@@ -165,18 +139,13 @@ try {
 </div>
 
 <script>
-    // Mendapatkan tombol "Report"
+    // Display current date on the report button
     var reportButton = document.getElementById('reportButton');
-
-    // Mendapatkan tanggal hari ini
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
-
     today = mm + '/' + dd + '/' + yyyy;
-
-    // Mengganti teks tombol dengan tanggal hari ini
     reportButton.innerHTML = today;
 </script>
 
