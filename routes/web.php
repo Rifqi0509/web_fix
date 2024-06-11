@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ use App\Http\Controllers\SurveyController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('./images/create', [ImageController::class, 'create'])->name('images.create');
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::get('/images', [ImageController::class, 'index'])->name('images.index');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/Daftar-Tamu-Kunjungan', [FormulirController::class, 'daftar'])->name('daftartamukunjungan');
@@ -41,6 +46,8 @@ Route::get('/table', [HomeController::class, 'tabler'])->name('table');
 Route::get('/element', [VisitorController::class, 'index'])->name('element');
 Route::get('/Struktur-organisasi', [HomeController::class, 'struktur'])->name('struktur')->middleware('auth.admin');
 Route::post('/tambahdata', [VisitorController::class, 'store'])->name('tambahdata');
+
+
 
 Route::middleware(['auth:admins', 'auth.admin'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
