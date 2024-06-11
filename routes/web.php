@@ -41,7 +41,8 @@ Route::get('/Verifikasi-Vip', [DetailVipController::class, 'verifikasi'])->name(
 Route::post('/daftar', [FormulirController::class, 'storeForm'])->name('daftar');
 Route::get('/Formulir-Tamu', [FormulirController::class, 'index'])->name('form-kunjungan');
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/table', [HomeController::class, 'tabler'])->name('table');
 Route::get('/element', [VisitorController::class, 'index'])->name('element');
 Route::get('/Struktur-organisasi', [HomeController::class, 'struktur'])->name('struktur')->middleware('auth.admin');
